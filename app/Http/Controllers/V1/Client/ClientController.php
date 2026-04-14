@@ -31,6 +31,17 @@ class ClientController extends Controller
     ];
 
 
+    /**
+     * 获取节点订阅配置 (Subscribe)
+     * 
+     * 各大代理客户端（如Clash, V2ray, Shadowrocket等）使用的统一订阅获取接口。
+     * 根据请求头的 User-Agent 或 flag 动态下发对应格式的协议节点配置。
+     * 
+     * @queryParam flag string 强制指定客户端类型标识(如 clash, v2ray, shadowrocket)
+     * @queryParam types string 取特定的节点类型（如 vmess|vless|trojan)
+     * @queryParam filter string 只保留包含特定关键字名称的节点
+     * @response 200 plain/text
+     */
     public function subscribe(Request $request)
     {
         HookManager::call('client.subscribe.before');

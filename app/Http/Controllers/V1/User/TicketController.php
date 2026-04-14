@@ -17,6 +17,14 @@ use Illuminate\Support\Facades\Log;
 
 class TicketController extends Controller
 {
+    /**
+     * 获取工单列表/详情
+     * 
+     * 如果未传 id，则返回该用户所有的工单列表；如果传入 id，则返回该工单的对话流详情。
+     * 
+     * @queryParam id int 需要查看详情的特定工单的ID (可选) Example: 1
+     * @responseField data array|object 如果没有传ID返回工单组，否则返回工单对象包含具体 message
+     */
     public function fetch(Request $request)
     {
         if ($request->input('id')) {
@@ -39,6 +47,15 @@ class TicketController extends Controller
         return $this->success(TicketResource::collection($ticket));
     }
 
+    /**
+     * 创建工单
+     * 
+     * 用户发起新的技术支持或财务支持工单。
+     * 
+     * @bodyParam subject string required 工单主题或简短标题 Example: 支付问题
+     * @bodyParam level int required 优先级类型(1:普通 2:重要等) Example: 1
+     * @bodyParam message string required 工单正文详细描述 Example: 我支付了没有到账
+     */
     public function save(TicketSave $request)
     {
         $ticketService = new TicketService();
@@ -53,6 +70,14 @@ class TicketController extends Controller
 
     }
 
+    /**
+     * 回复工单
+     * 
+     * 在已有的工单下追加新的消息回复管理员。若工单已关闭则无法回复。
+     * 
+     * @bodyParam id int required 需要回复的工单ID Example: 1
+     * @bodyParam message string required 回复的具体内容 Example: 请问什么时候能处理好？
+     */
     public function reply(Request $request)
     {
         if (empty($request->input('id'))) {
@@ -88,6 +113,13 @@ class TicketController extends Controller
     }
 
 
+    /**
+     * 关闭工单
+     * 
+     * 用户主动关闭自己目前处于开启状态的售后工单。
+     * 
+     * @bodyParam id int required 要关闭的工单ID Example: 1
+     */
     public function close(Request $request)
     {
         if (empty($request->input('id'))) {
@@ -113,6 +145,14 @@ class TicketController extends Controller
             ->first();
     }
 
+    /**
+     * 发起提现工单申请
+     * 
+     * 如果用户的推广佣金余额达到可提现门槛，可以通过此接口直接通过自动创建提现工单向管理员发起申请。
+     * 
+     * @bodyParam withdraw_method string required 选择的提现方式(alipay, usdt等) Example: alipay
+     * @bodyParam withdraw_account string required 收款账号信息 Example: admin@alipay.com
+     */
     public function withdraw(TicketWithdraw $request)
     {
         if ((int) admin_setting('withdraw_close_enable', 0)) {

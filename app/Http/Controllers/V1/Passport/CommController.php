@@ -16,6 +16,14 @@ use Illuminate\Support\Facades\Cache;
 class CommController extends Controller
 {
 
+    /**
+     * 发送邮箱验证码
+     * 
+     * 用于在用户注册或找回密码时，向指定邮箱发送含有6位验证码的邮件。
+     * 
+     * @bodyParam email string required 需要接收验证码的电子邮箱 Example: demo@test.com
+     * @bodyParam turnstile string Turnstile/recaptcha等极验证码的Token（若系统开启人机验证则必填）
+     */
     public function sendEmailVerify(CommSendEmailVerify $request)
     {
                 // 验证人机验证码
@@ -62,6 +70,13 @@ class CommController extends Controller
         return $this->success(true);
     }
 
+    /**
+     * 记录邀请链接访问次数 (PV)
+     * 
+     * 用户访问他人的邀请链接时，后台静默记录1次PV浏览量。
+     * 
+     * @bodyParam invite_code string required 推广邀请码 Example: abc12345
+     */
     public function pv(Request $request)
     {
         $inviteCode = InviteCode::where('code', $request->input('invite_code'))->first();

@@ -44,6 +44,12 @@ docker compose up -d
 
 ### Development Guides
 - [Plugin Development Guide](./docs/en/development/plugin-development-guide.md) - Complete guide for developing XBoard plugins
+- **API Documentation Generation**:
+  You can automatically generate rich API documentation (including OpenAPI/Swagger specs and Postman collections) by executing:
+  ```bash
+  docker compose run --rm web php artisan scribe:generate
+  ```
+  Once completed, access your generated API documentation in the `public/docs/` directory or visit `http://your_domain_or_ip:7001/docs`.
 
 ### Deployment Guides
 - [Deploy with 1Panel](./docs/en/installation/1panel.md)
@@ -104,3 +110,21 @@ Issues and Pull Requests are welcome to help improve the project.
 ## 📈 Star History
 
 [![Stargazers over time](https://starchart.cc/cedar2025/Xboard.svg)](https://starchart.cc/cedar2025/Xboard)
+
+docker compose run -it --rm \
+    -e ENABLE_SQLITE=true \
+    -e ENABLE_REDIS=true \
+    -e ADMIN_ACCOUNT=admin@demo.com \
+    web php artisan xboard:install
+[+] Running 1/1
+ ✔ Container xboard-redis-1  Started                                                                                                                                        0.1s 
+__    __ ____                      _  
+\ \  / /| __ )  ___   __ _ _ __ __| | 
+ \ \/ / | __ \ / _ \ / _` | '__/ _` | 
+ / /\ \ | |_) | (_) | (_| | | | (_| | 
+/_/  \_\|____/ \___/ \__,_|_|  \__,_| 
+访问 http(s)://你的站点/57a7189f 进入管理面板，你可以在用户中心修改你的密码。
+如需重新安装请清空目录下 .env 文件的内容（Docker安装方式不可以删除此文件）
+快捷清空.env命令：
+
+ rm .env && touch .env

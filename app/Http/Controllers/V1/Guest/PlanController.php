@@ -17,6 +17,13 @@ class PlanController extends Controller
     {
         $this->planService = $planService;
     }
+    /**
+     * 获取所有的前台展示套餐
+     * 
+     * 返回所有可供游客/新注册用户购买的订阅计划详情列表。该接口在游客页面下即可访问，无需登录。
+     * 
+     * @responseField data array 套餐数据列表
+     */
     public function fetch(Request $request)
     {
         $plan = $this->planService->getAvailablePlans();

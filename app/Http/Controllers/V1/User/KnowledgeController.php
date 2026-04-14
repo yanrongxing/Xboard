@@ -21,6 +21,17 @@ class KnowledgeController extends Controller
         $this->userService = $userService;
     }
 
+    /**
+     * 获取知识库文章列表/详情
+     * 
+     * 用于前端知识库中心的文章展示，支持通过传递ID查看详细正文，支持按语言检索和关键字模糊搜索。
+     * 当获取到正文内容时，系统会自动替换文章中包含的动态标签（如 `{{subscribeUrl}}` 自动替换为用户的订阅地址）。
+     * 
+     * @queryParam id int 可选，如果不传则返回列表，如果传了特定文章ID则返回单篇详情 Example: 1
+     * @queryParam language string 按照语种筛选文章（默认en/zh等） Example: zh-CN
+     * @queryParam keyword string 关键字搜索标题或内容
+     * @responseField data array|object 列表形态下返回按类别分组的文章数组，详情层级下返回单独文章内容
+     */
     public function fetch(Request $request)
     {
         $request->validate([

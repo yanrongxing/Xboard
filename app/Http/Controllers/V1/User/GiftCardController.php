@@ -16,6 +16,13 @@ class GiftCardController extends Controller
     /**
      * 查询兑换码信息
      */
+    /**
+     * 查询兑换码信息
+     * 
+     * 用于检查用户提交的礼品卡/兑换码卡密的有效性，并返回面额及绑定奖励的预览信息。
+     * 
+     * @bodyParam code string required 礼品兑换码 Example: ABCD-1234
+     */
     public function check(GiftCardCheckRequest $request)
     {
         try {
@@ -54,6 +61,13 @@ class GiftCardController extends Controller
 
     /**
      * 使用兑换码
+     */
+    /**
+     * 使用兑换码
+     * 
+     * 正式消耗一张礼品卡，将其包含的余额或时长充值进入当前用户的账户内。
+     * 
+     * @bodyParam code string required 礼品兑换码 Example: ABCD-1234
      */
     public function redeem(GiftCardRedeemRequest $request)
     {
@@ -96,6 +110,14 @@ class GiftCardController extends Controller
 
     /**
      * 获取用户兑换记录
+     */
+    /**
+     * 获取用户兑换记录
+     * 
+     * 查询当前用户历史上兑换过的所有礼品卡记录，支持分页。
+     * 
+     * @queryParam page int 当前页码 Example: 1
+     * @queryParam per_page int 每页条数 Example: 15
      */
     public function history(Request $request)
     {
@@ -140,6 +162,13 @@ class GiftCardController extends Controller
     /**
      * 获取兑换记录详情
      */
+    /**
+     * 获取兑换记录详情
+     * 
+     * 查看某次礼品卡兑换过程的详细记录和相关额外奖励触发信息。
+     * 
+     * @queryParam id int required 需要查看的兑换记录(Usage)的ID Example: 1
+     */
     public function detail(Request $request)
     {
         $request->validate([
@@ -183,6 +212,11 @@ class GiftCardController extends Controller
 
     /**
      * 获取可用的礼品卡类型
+     */
+    /**
+     * 获取可用的礼品卡类型
+     * 
+     * 枚举系统中支持的所有礼品卡类别（如通用充值卡、特定套餐时长卡等）。
      */
     public function types(Request $request)
     {

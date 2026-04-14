@@ -11,6 +11,16 @@ use Symfony\Component\Yaml\Yaml;
 
 class AppController extends Controller
 {
+    /**
+     * 获取客户端全量配置 (V2)
+     * 
+     * 一次性获取应用的各种系统设置，如应用信息、开关状态、UI配色、规则和支付设定等，供给专门定制的V2客户端使用。
+     * 
+     * @responseField data.app_info object 站点基础描述信息
+     * @responseField data.features object 系统核心特性开关
+     * @responseField data.ui_config object 客户端页面定制与配色配置
+     * @responseField data.business_rules object 安全与业务运行规则
+     */
     public function getConfig(Request $request)
     {
         $config = [
@@ -121,6 +131,18 @@ class AppController extends Controller
         return response()->json(['data' => $config]);
     }
 
+    /**
+     * 获取客户端更新引导 (V2)
+     * 
+     * 检测各个平台 (Windows, macOS, Android) 配置中的最新可用版本及下载链接。
+     * 
+     * @responseField data.windows_version string Windows客户端版本号
+     * @responseField data.windows_download_url string Windows版下载地址
+     * @responseField data.macos_version string macOS客户端版本号
+     * @responseField data.macos_download_url string macOS版下载地址
+     * @responseField data.android_version string Android客户端版本号
+     * @responseField data.android_download_url string Android版下载地址
+     */
     public function getVersion(Request $request)
     {
         if (

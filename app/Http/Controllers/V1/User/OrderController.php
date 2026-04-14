@@ -20,6 +20,14 @@ use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
+    /**
+     * 获取订单列表
+     * 
+     * 获取当前用户的订单列表，可以按照订单状态筛选。
+     * 
+     * @queryParam status int 订单状态筛选(0:待支付 1:已支付 2:已取消 3:已完成) Example: 1
+     * @responseField data array 订单数组
+     */
     public function fetch(Request $request)
     {
         $request->validate([
@@ -36,6 +44,16 @@ class OrderController extends Controller
         return $this->success(OrderResource::collection($orders));
     }
 
+    /**
+     * 获取订单详情
+     * 
+     * 根据订单号（trade_no）获取特定订单的详细信息，包括支付方式和订阅计划。
+     * 
+     * @queryParam trade_no string required 订单流水号 Example: 2023010112345678
+     * @responseField data.trade_no string 订单号
+     * @responseField data.total_amount numeric 订单总金额
+     * @responseField data.status int 订单状态
+     */
     public function detail(Request $request)
     {
         $request->validate([
@@ -58,6 +76,16 @@ class OrderController extends Controller
         return $this->success(OrderResource::make($order));
     }
 
+    /**
+     * 创建订单
+     * 
+     * 创建一个新的购买或续费订阅计划的订单。
+     * 
+     * @bodyParam plan_id int required 订阅计划的ID Example: 1
+     * @bodyParam period string required 购买周期（如 month, quarter, half_year, year） Example: month
+     * @bodyParam coupon_code string 优惠券码（可选） 
+     * @responseField data string 创建成功的订单号(trade_no)
+     */
     public function save(OrderSave $request)
     {
         $request->validate([
@@ -115,6 +143,17 @@ class OrderController extends Controller
         }
     }
 
+    /**
+     * 订单支付(Checkout)
+     * 
+     * 将创建好的订单发起支付，选择支付网关提交。
+     * 
+     * @bodyParam trade_no string required 需要支付的订单号 Example: 2023010112345678
+     * @bodyParam method int required 支付方式ID（通过获取支付方式接口获取） Example: 1
+     * @bodyParam token string Stripe支付Token等相关参数（可选）
+     * @responseField type int 返回动作类型(-1:无需跳转 0:URL跳转 1:HTML代码渲染)
+     * @responseField data string 支付网关返回的内容(如URL或HTML)
+     */
     public function checkout(Request $request)
     {
         $tradeNo = $request->input('trade_no');
@@ -160,6 +199,14 @@ class OrderController extends Controller
         ]);
     }
 
+    /**
+     * 检查订单状态
+     * 
+     * 轮询查询某个订单当前的支付或处理状态。
+     * 
+     * @queryParam trade_no string required 订单流水号 Example: 2023010112345678
+     * @responseField data int 订单当前状态(0:待支付 1:开通中 2:已取消 3:已完成)
+     */
     public function check(Request $request)
     {
         $tradeNo = $request->input('trade_no');
@@ -172,6 +219,15 @@ class OrderController extends Controller
         return $this->success($order->status);
     }
 
+    /**
+     * 获取可用支付方式
+     * 
+     * 获取系统当前开启并允许用户使用的所有支付网关及手续费等信息。
+     * 
+     * @responseField data.id int 支付方式ID
+     * @responseField data.name string 支付方式名称
+     * @responseField data.icon string 支付方式图标
+     */
     public function getPaymentMethod()
     {
         $methods = Payment::select([
@@ -189,6 +245,14 @@ class OrderController extends Controller
         return $this->success($methods);
     }
 
+    /**
+     * 取消订单
+     * 
+     * 放弃并取消一个未支付的订单。
+     * 
+     * @bodyParam trade_no string required 需要取消的订单号 Example: 2023010112345678
+     * @responseField data bool 成功为 true
+     */
     public function cancel(Request $request)
     {
         if (empty($request->input('trade_no'))) {

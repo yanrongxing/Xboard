@@ -204,6 +204,7 @@ INTRO
         'metadata' => [
             Strategies\Metadata\GetFromDocBlocks::class,
             Strategies\Metadata\GetFromMetadataAttributes::class,
+            \App\Docs\Scribe\AssignGroup::class,
         ],
         'urlParameters' => [
             Strategies\UrlParameters\GetFromLaravelAPI::class,

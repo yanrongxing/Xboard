@@ -31,6 +31,10 @@ class AuthController extends Controller
 
     /**
      * 通过邮件链接登录
+     *
+     * @bodyParam email string required 用户的电子邮箱地址 Example: admin@demo.com
+     * @bodyParam redirect string 登录成功后重定向的路径 Example: /dashboard
+     * @responseField data bool 成功返回 true
      */
     public function loginWithMailLink(Request $request)
     {
@@ -53,6 +57,12 @@ class AuthController extends Controller
 
     /**
      * 用户注册
+     *
+     * @bodyParam email string required 电子邮箱地址 Example: user@example.com
+     * @bodyParam password string required 密码，至少8位 Example: password123
+     * @bodyParam invite_code string 邀请码（选填） 
+     * @bodyParam email_code string 邮箱验证码（如果开启验证则必填）
+     * @responseField data.auth_data string 认证口令 (Token)
      */
     public function register(AuthRegister $request)
     {
@@ -68,6 +78,10 @@ class AuthController extends Controller
 
     /**
      * 用户登录
+     *
+     * @bodyParam email string required 电子邮箱地址 Example: user@example.com
+     * @bodyParam password string required 登录密码 Example: password123
+     * @responseField data.auth_data string 认证口令 (Token)
      */
     public function login(AuthLogin $request)
     {
@@ -86,6 +100,11 @@ class AuthController extends Controller
 
     /**
      * 通过token登录
+     * 
+     * @queryParam token string 重定向Token（二选一）
+     * @queryParam verify string 验证Token（二选一）
+     * @queryParam redirect string 重定向路径
+     * @responseField data.auth_data string 认证口令 (Token)
      */
     public function token2Login(Request $request)
     {
@@ -132,6 +151,10 @@ class AuthController extends Controller
 
     /**
      * 获取快速登录URL
+     * 
+     * @bodyParam auth_data string 认证凭据 (Header/Authorization同样有效)
+     * @bodyParam redirect string 登录成功后的跳转地址
+     * @responseField data string 快速登录的一键直达URL
      */
     public function getQuickLoginUrl(Request $request)
     {
@@ -157,6 +180,10 @@ class AuthController extends Controller
 
     /**
      * 忘记密码处理
+     * 
+     * @bodyParam email string required 注册时使用的电子邮箱 Example: user@example.com
+     * @bodyParam password string required 新密码 Example: newpassword123
+     * @bodyParam email_code string required 邮件里的找回验证码
      */
     public function forget(AuthForget $request)
     {

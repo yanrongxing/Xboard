@@ -10,6 +10,16 @@ use Illuminate\Http\Request;
 
 class CouponController extends Controller
 {
+    /**
+     * 校验/获取优惠券信息
+     * 
+     * 用于在购物车或订单结算时，查询输入兑换码对应的折扣详情。
+     * 
+     * @bodyParam code string required 优惠券代码 Example: 88888888
+     * @bodyParam plan_id int 拟购买的订阅套餐ID
+     * @bodyParam period string 拟购买的时长类型（如 month, year等）
+     * @responseField data object 优惠券具体金额/比例信息
+     */
     public function check(Request $request)
     {
         if (empty($request->input('code'))) {

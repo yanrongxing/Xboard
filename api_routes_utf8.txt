@@ -1,0 +1,124 @@
+﻿
+  GET|HEAD   api/v1/client/app/getConfig ... V1\Client\AppController@getConfig
+  GET|HEAD   api/v1/client/app/getVersion . V1\Client\AppController@getVersion
+  GET|HEAD   api/v1/client/subscribe client.subscribe.legacy 鈥?V1\Client\Clie鈥?  GET|HEAD   api/v1/guest/comm/config ......... V1\Guest\CommController@config
+  GET|POST|HEAD api/v1/guest/payment/notify/{method}/{uuid} V1\Guest\PaymentC鈥?  GET|HEAD   api/v1/guest/plan/fetch ........... V1\Guest\PlanController@fetch
+  POST       api/v1/guest/telegram/webhook V1\Guest\TelegramController@webhook
+  POST       api/v1/passport/auth/forget ... V1\Passport\AuthController@forget
+  POST       api/v1/passport/auth/getQuickLoginUrl V1\Passport\AuthController鈥?  POST       api/v1/passport/auth/login ..... V1\Passport\AuthController@login
+  POST       api/v1/passport/auth/loginWithMailLink V1\Passport\AuthControlle鈥?  POST       api/v1/passport/auth/register V1\Passport\AuthController@register
+  GET|HEAD   api/v1/passport/auth/token2Login V1\Passport\AuthController@toke鈥?  POST       api/v1/passport/comm/pv ........... V1\Passport\CommController@pv
+  POST       api/v1/passport/comm/sendEmailVerify V1\Passport\CommController@鈥?  POST       api/v1/server/ShadowsocksTidalab/submit V1\Server\ShadowsocksTid鈥?  GET|HEAD   api/v1/server/ShadowsocksTidalab/user V1\Server\ShadowsocksTidal鈥?  GET|HEAD   api/v1/server/TrojanTidalab/config V1\Server\TrojanTidalabContro鈥?  POST       api/v1/server/TrojanTidalab/submit V1\Server\TrojanTidalabContro鈥?  GET|HEAD   api/v1/server/TrojanTidalab/user V1\Server\TrojanTidalabControll鈥?  POST       api/v1/server/UniProxy/alive . V1\Server\UniProxyController@alive
+  GET|HEAD   api/v1/server/UniProxy/alivelist V1\Server\UniProxyController@al鈥?  GET|HEAD   api/v1/server/UniProxy/config V1\Server\UniProxyController@config
+  POST       api/v1/server/UniProxy/push ... V1\Server\UniProxyController@push
+  POST       api/v1/server/UniProxy/status V1\Server\UniProxyController@status
+  GET|HEAD   api/v1/server/UniProxy/user ... V1\Server\UniProxyController@user
+  POST       api/v1/user/changePassword V1\User\UserController@changePassword
+  GET|HEAD   api/v1/user/checkLogin ........ V1\User\UserController@checkLogin
+  GET|HEAD   api/v1/user/comm/config ........... V1\User\CommController@config
+  POST       api/v1/user/comm/getStripePublicKey V1\User\CommController@getSt鈥?  POST       api/v1/user/coupon/check ......... V1\User\CouponController@check
+  GET|HEAD   api/v1/user/getActiveSession V1\User\UserController@getActiveSes鈥?  POST       api/v1/user/getQuickLoginUrl V1\User\UserController@getQuickLogi鈥?  GET|HEAD   api/v1/user/getStat .............. V1\User\UserController@getStat
+  GET|HEAD   api/v1/user/getSubscribe .... V1\User\UserController@getSubscribe
+  POST       api/v1/user/gift-card/check .... V1\User\GiftCardController@check
+  GET|HEAD   api/v1/user/gift-card/detail .. V1\User\GiftCardController@detail
+  GET|HEAD   api/v1/user/gift-card/history V1\User\GiftCardController@history
+  POST       api/v1/user/gift-card/redeem .. V1\User\GiftCardController@redeem
+  GET|HEAD   api/v1/user/gift-card/types .... V1\User\GiftCardController@types
+  GET|HEAD   api/v1/user/info .................... V1\User\UserController@info
+  GET|HEAD   api/v1/user/invite/details ..... V1\User\InviteController@details
+  GET|HEAD   api/v1/user/invite/fetch ......... V1\User\InviteController@fetch
+  GET|HEAD   api/v1/user/invite/save ........... V1\User\InviteController@save
+  GET|HEAD   api/v1/user/knowledge/fetch ... V1\User\KnowledgeController@fetch
+  GET|HEAD   api/v1/user/knowledge/getCategory V1\User\KnowledgeController@ge鈥?  GET|HEAD   api/v1/user/notice/fetch ......... V1\User\NoticeController@fetch
+  POST       api/v1/user/order/cancel ......... V1\User\OrderController@cancel
+  GET|HEAD   api/v1/user/order/check ........... V1\User\OrderController@check
+  POST       api/v1/user/order/checkout ..... V1\User\OrderController@checkout
+  GET|HEAD   api/v1/user/order/detail ......... V1\User\OrderController@detail
+  GET|HEAD   api/v1/user/order/fetch ........... V1\User\OrderController@fetch
+  GET|HEAD   api/v1/user/order/getPaymentMethod V1\User\OrderController@getPa鈥?  POST       api/v1/user/order/save ............. V1\User\OrderController@save
+  GET|HEAD   api/v1/user/plan/fetch ............. V1\User\PlanController@fetch
+  POST       api/v1/user/removeActiveSession V1\User\UserController@removeAct鈥?  GET|HEAD   api/v1/user/resetSecurity .. V1\User\UserController@resetSecurity
+  GET|HEAD   api/v1/user/server/fetch ......... V1\User\ServerController@fetch
+  GET|HEAD   api/v1/user/stat/getTrafficLog V1\User\StatController@getTraffic鈥?  GET|HEAD   api/v1/user/telegram/getBotInfo V1\User\TelegramController@getBo鈥?  POST       api/v1/user/ticket/close ......... V1\User\TicketController@close
+  GET|HEAD   api/v1/user/ticket/fetch ......... V1\User\TicketController@fetch
+  POST       api/v1/user/ticket/reply ......... V1\User\TicketController@reply
+  POST       api/v1/user/ticket/save ........... V1\User\TicketController@save
+  POST       api/v1/user/ticket/withdraw ... V1\User\TicketController@withdraw
+  POST       api/v1/user/transfer ............ V1\User\UserController@transfer
+  POST       api/v1/user/update ................ V1\User\UserController@update
+  GET|HEAD   api/v2/57a7189f/config/fetch .... V2\Admin\ConfigController@fetch
+  GET|HEAD   api/v2/57a7189f/config/getEmailTemplate V2\Admin\ConfigControlle鈥?  GET|HEAD   api/v2/57a7189f/config/getThemeTemplate V2\Admin\ConfigControlle鈥?  POST       api/v2/57a7189f/config/save ...... V2\Admin\ConfigController@save
+  POST       api/v2/57a7189f/config/setTelegramWebhook V2\Admin\ConfigControl鈥?  POST       api/v2/57a7189f/config/testSendMail V2\Admin\ConfigController@te鈥?  POST       api/v2/57a7189f/coupon/drop ...... V2\Admin\CouponController@drop
+  ANY        api/v2/57a7189f/coupon/fetch .... V2\Admin\CouponController@fetch
+  POST       api/v2/57a7189f/coupon/generate V2\Admin\CouponController@genera鈥?  POST       api/v2/57a7189f/coupon/show ...... V2\Admin\CouponController@show
+  POST       api/v2/57a7189f/coupon/update .. V2\Admin\CouponController@update
+  ANY        api/v2/57a7189f/gift-card/codes V2\Admin\GiftCardController@codes
+  POST       api/v2/57a7189f/gift-card/create-template V2\Admin\GiftCardContr鈥?  POST       api/v2/57a7189f/gift-card/delete-code V2\Admin\GiftCardControlle鈥?  POST       api/v2/57a7189f/gift-card/delete-template V2\Admin\GiftCardContr鈥?  GET|HEAD   api/v2/57a7189f/gift-card/export-codes V2\Admin\GiftCardControll鈥?  POST       api/v2/57a7189f/gift-card/generate-codes V2\Admin\GiftCardContro鈥?  ANY        api/v2/57a7189f/gift-card/statistics V2\Admin\GiftCardController鈥?  ANY        api/v2/57a7189f/gift-card/templates V2\Admin\GiftCardController@鈥?  POST       api/v2/57a7189f/gift-card/toggle-code V2\Admin\GiftCardControlle鈥?  GET|HEAD   api/v2/57a7189f/gift-card/types V2\Admin\GiftCardController@types
+  POST       api/v2/57a7189f/gift-card/update-code V2\Admin\GiftCardControlle鈥?  POST       api/v2/57a7189f/gift-card/update-template V2\Admin\GiftCardContr鈥?  ANY        api/v2/57a7189f/gift-card/usages V2\Admin\GiftCardController@usa鈥?  POST       api/v2/57a7189f/knowledge/drop V2\Admin\KnowledgeController@drop
+  GET|HEAD   api/v2/57a7189f/knowledge/fetch V2\Admin\KnowledgeController@fet鈥?  GET|HEAD   api/v2/57a7189f/knowledge/getCategory V2\Admin\KnowledgeControll鈥?  POST       api/v2/57a7189f/knowledge/save V2\Admin\KnowledgeController@save
+  POST       api/v2/57a7189f/knowledge/show V2\Admin\KnowledgeController@show
+  POST       api/v2/57a7189f/knowledge/sort V2\Admin\KnowledgeController@sort
+  POST       api/v2/57a7189f/notice/drop ...... V2\Admin\NoticeController@drop
+  GET|HEAD   api/v2/57a7189f/notice/fetch .... V2\Admin\NoticeController@fetch
+  POST       api/v2/57a7189f/notice/save ...... V2\Admin\NoticeController@save
+  POST       api/v2/57a7189f/notice/show ...... V2\Admin\NoticeController@show
+  POST       api/v2/57a7189f/notice/sort ...... V2\Admin\NoticeController@sort
+  POST       api/v2/57a7189f/notice/update .. V2\Admin\NoticeController@update
+  POST       api/v2/57a7189f/order/assign .... V2\Admin\OrderController@assign
+  POST       api/v2/57a7189f/order/cancel .... V2\Admin\OrderController@cancel
+  POST       api/v2/57a7189f/order/detail .... V2\Admin\OrderController@detail
+  ANY        api/v2/57a7189f/order/fetch ...... V2\Admin\OrderController@fetch
+  POST       api/v2/57a7189f/order/paid ........ V2\Admin\OrderController@paid
+  POST       api/v2/57a7189f/order/update .... V2\Admin\OrderController@update
+  POST       api/v2/57a7189f/payment/drop .... V2\Admin\PaymentController@drop
+  GET|HEAD   api/v2/57a7189f/payment/fetch .. V2\Admin\PaymentController@fetch
+  POST       api/v2/57a7189f/payment/getPaymentForm V2\Admin\PaymentControlle鈥?  GET|HEAD   api/v2/57a7189f/payment/getPaymentMethods V2\Admin\PaymentContro鈥?  POST       api/v2/57a7189f/payment/save .... V2\Admin\PaymentController@save
+  POST       api/v2/57a7189f/payment/show .... V2\Admin\PaymentController@show
+  POST       api/v2/57a7189f/payment/sort .... V2\Admin\PaymentController@sort
+  POST       api/v2/57a7189f/plan/drop .......... V2\Admin\PlanController@drop
+  GET|HEAD   api/v2/57a7189f/plan/fetch ........ V2\Admin\PlanController@fetch
+  POST       api/v2/57a7189f/plan/save .......... V2\Admin\PlanController@save
+  POST       api/v2/57a7189f/plan/sort .......... V2\Admin\PlanController@sort
+  POST       api/v2/57a7189f/plan/update ...... V2\Admin\PlanController@update
+  GET|HEAD   api/v2/57a7189f/plugin/config V2\Admin\PluginController@getConfig
+  POST       api/v2/57a7189f/plugin/config V2\Admin\PluginController@updateCo鈥?  POST       api/v2/57a7189f/plugin/delete .. V2\Admin\PluginController@delete
+  POST       api/v2/57a7189f/plugin/disable V2\Admin\PluginController@disable
+  POST       api/v2/57a7189f/plugin/enable .. V2\Admin\PluginController@enable
+  GET|HEAD   api/v2/57a7189f/plugin/getPlugins V2\Admin\PluginController@index
+  POST       api/v2/57a7189f/plugin/install V2\Admin\PluginController@install
+  GET|HEAD   api/v2/57a7189f/plugin/types .... V2\Admin\PluginController@types
+  POST       api/v2/57a7189f/plugin/uninstall V2\Admin\PluginController@unins鈥?  POST       api/v2/57a7189f/plugin/upgrade V2\Admin\PluginController@upgrade
+  POST       api/v2/57a7189f/plugin/upload .. V2\Admin\PluginController@upload
+  POST       api/v2/57a7189f/server/group/drop V2\Admin\Server\GroupControlle鈥?  GET|HEAD   api/v2/57a7189f/server/group/fetch V2\Admin\Server\GroupControll鈥?  POST       api/v2/57a7189f/server/group/save V2\Admin\Server\GroupControlle鈥?  POST       api/v2/57a7189f/server/manage/batchDelete V2\Admin\Server\Manage鈥?  POST       api/v2/57a7189f/server/manage/batchResetTraffic V2\Admin\Server\鈥?  POST       api/v2/57a7189f/server/manage/copy V2\Admin\Server\ManageControl鈥?  POST       api/v2/57a7189f/server/manage/drop V2\Admin\Server\ManageControl鈥?  GET|HEAD   api/v2/57a7189f/server/manage/getNodes V2\Admin\Server\ManageCon鈥?  POST       api/v2/57a7189f/server/manage/resetTraffic V2\Admin\Server\Manag鈥?  POST       api/v2/57a7189f/server/manage/save V2\Admin\Server\ManageControl鈥?  POST       api/v2/57a7189f/server/manage/sort V2\Admin\Server\ManageControl鈥?  POST       api/v2/57a7189f/server/manage/update V2\Admin\Server\ManageContr鈥?  POST       api/v2/57a7189f/server/route/drop V2\Admin\Server\RouteControlle鈥?  GET|HEAD   api/v2/57a7189f/server/route/fetch V2\Admin\Server\RouteControll鈥?  POST       api/v2/57a7189f/server/route/save V2\Admin\Server\RouteControlle鈥?  GET|HEAD   api/v2/57a7189f/stat/getOrder .. V2\Admin\StatController@getOrder
+  GET|HEAD   api/v2/57a7189f/stat/getOverride V2\Admin\StatController@getOver鈥?  GET|HEAD   api/v2/57a7189f/stat/getRanking V2\Admin\StatController@getRanki鈥?  GET|HEAD   api/v2/57a7189f/stat/getServerLastRank V2\Admin\StatController@g鈥?  GET|HEAD   api/v2/57a7189f/stat/getServerYesterdayRank V2\Admin\StatControl鈥?  GET|HEAD   api/v2/57a7189f/stat/getStatRecord V2\Admin\StatController@getSt鈥?  ANY        api/v2/57a7189f/stat/getStatUser V2\Admin\StatController@getStat鈥?  GET|HEAD   api/v2/57a7189f/stat/getStats .. V2\Admin\StatController@getStats
+  GET|HEAD   api/v2/57a7189f/stat/getTrafficRank V2\Admin\StatController@getT鈥?  ANY        api/v2/57a7189f/system/getAuditLog V2\Admin\SystemController@get鈥?  GET|HEAD   api/v2/57a7189f/system/getHorizonFailedJobs V2\Admin\SystemContr鈥?  GET|HEAD   api/v2/57a7189f/system/getQueueMasters Laravel\Horizon 鈥?MasterS鈥?  GET|HEAD   api/v2/57a7189f/system/getQueueStats V2\Admin\SystemController@g鈥?  GET|HEAD   api/v2/57a7189f/system/getQueueWorkload V2\Admin\SystemControlle鈥?  GET|HEAD   api/v2/57a7189f/system/getSystemStatus V2\Admin\SystemController鈥?  POST       api/v2/57a7189f/theme/delete .... V2\Admin\ThemeController@delete
+  POST       api/v2/57a7189f/theme/getThemeConfig V2\Admin\ThemeController@ge鈥?  GET|HEAD   api/v2/57a7189f/theme/getThemes V2\Admin\ThemeController@getThem鈥?  POST       api/v2/57a7189f/theme/saveThemeConfig V2\Admin\ThemeController@s鈥?  POST       api/v2/57a7189f/theme/upload .... V2\Admin\ThemeController@upload
+  POST       api/v2/57a7189f/ticket/close .... V2\Admin\TicketController@close
+  ANY        api/v2/57a7189f/ticket/fetch .... V2\Admin\TicketController@fetch
+  POST       api/v2/57a7189f/ticket/reply .... V2\Admin\TicketController@reply
+  GET|HEAD   api/v2/57a7189f/traffic-reset/logs V2\Admin\TrafficResetControll鈥?  POST       api/v2/57a7189f/traffic-reset/reset-user V2\Admin\TrafficResetCo鈥?  GET|HEAD   api/v2/57a7189f/traffic-reset/stats V2\Admin\TrafficResetControl鈥?  GET|HEAD   api/v2/57a7189f/traffic-reset/user/{userId}/history V2\Admin\Tra鈥?  POST       api/v2/57a7189f/user/ban ............ V2\Admin\UserController@ban
+  POST       api/v2/57a7189f/user/destroy .... V2\Admin\UserController@destroy
+  POST       api/v2/57a7189f/user/dumpCSV .... V2\Admin\UserController@dumpCSV
+  ANY        api/v2/57a7189f/user/fetch ........ V2\Admin\UserController@fetch
+  POST       api/v2/57a7189f/user/generate .. V2\Admin\UserController@generate
+  GET|HEAD   api/v2/57a7189f/user/getUserInfoById V2\Admin\UserController@get鈥?  POST       api/v2/57a7189f/user/resetSecret V2\Admin\UserController@resetSe鈥?  POST       api/v2/57a7189f/user/sendMail .. V2\Admin\UserController@sendMail
+  POST       api/v2/57a7189f/user/setInviteUser V2\Admin\UserController@setIn鈥?  POST       api/v2/57a7189f/user/update ...... V2\Admin\UserController@update
+  GET|HEAD   api/v2/client/app/getConfig ... V2\Client\AppController@getConfig
+  GET|HEAD   api/v2/client/app/getVersion . V2\Client\AppController@getVersion
+  POST       api/v2/passport/auth/forget ... V1\Passport\AuthController@forget
+  POST       api/v2/passport/auth/getQuickLoginUrl V1\Passport\AuthController鈥?  POST       api/v2/passport/auth/login ..... V1\Passport\AuthController@login
+  POST       api/v2/passport/auth/loginWithMailLink V1\Passport\AuthControlle鈥?  POST       api/v2/passport/auth/register V1\Passport\AuthController@register
+  GET|HEAD   api/v2/passport/auth/token2Login V1\Passport\AuthController@toke鈥?  POST       api/v2/passport/comm/pv ........... V1\Passport\CommController@pv
+  POST       api/v2/passport/comm/sendEmailVerify V1\Passport\CommController@鈥?  POST       api/v2/server/alive .......... V1\Server\UniProxyController@alive
+  GET|HEAD   api/v2/server/alivelist .. V1\Server\UniProxyController@alivelist
+  GET|HEAD   api/v2/server/config ........ V1\Server\UniProxyController@config
+  POST       api/v2/server/handshake .... V2\Server\ServerController@handshake
+  POST       api/v2/server/push ............ V1\Server\UniProxyController@push
+  POST       api/v2/server/report .......... V2\Server\ServerController@report
+  POST       api/v2/server/status ........ V1\Server\UniProxyController@status
+  GET|HEAD   api/v2/server/user ............ V1\Server\UniProxyController@user
+  GET|HEAD   api/v2/user/info .................... V1\User\UserController@info
+  GET|HEAD   api/v2/user/resetSecurity .. V1\User\UserController@resetSecurity
+  GET|HEAD   monitor/api/batches horizon.jobs-batches.index 鈥?Laravel\Horizon鈥?  POST       monitor/api/batches/retry/{id} horizon.jobs-batches.retry 鈥?Lara鈥?  GET|HEAD   monitor/api/batches/{id} horizon.jobs-batches.show 鈥?Laravel\Hor鈥?  GET|HEAD   monitor/api/jobs/completed horizon.completed-jobs.index 鈥?Larave鈥?  GET|HEAD   monitor/api/jobs/failed horizon.failed-jobs.index 鈥?Laravel\Hori鈥?  GET|HEAD   monitor/api/jobs/failed/{id} horizon.failed-jobs.show 鈥?Laravel\鈥?  GET|HEAD   monitor/api/jobs/pending horizon.pending-jobs.index 鈥?Laravel\Ho鈥?  POST       monitor/api/jobs/retry/{id} horizon.retry-jobs.show 鈥?Laravel\Ho鈥?  GET|HEAD   monitor/api/jobs/silenced horizon.silenced-jobs.index 鈥?Laravel\鈥?  GET|HEAD   monitor/api/jobs/{id} horizon.jobs.show 鈥?Laravel\Horizon 鈥?Jobs鈥?  GET|HEAD   monitor/api/masters horizon.masters.index 鈥?Laravel\Horizon 鈥?Ma鈥?  GET|HEAD   monitor/api/metrics/jobs horizon.jobs-metrics.index 鈥?Laravel\Ho鈥?  GET|HEAD   monitor/api/metrics/jobs/{id} horizon.jobs-metrics.show 鈥?Larave鈥?  GET|HEAD   monitor/api/metrics/queues horizon.queues-metrics.index 鈥?Larave鈥?  GET|HEAD   monitor/api/metrics/queues/{id} horizon.queues-metrics.show 鈥?La鈥?  GET|HEAD   monitor/api/monitoring horizon.monitoring.index 鈥?Laravel\Horizo鈥?  POST       monitor/api/monitoring horizon.monitoring.store 鈥?Laravel\Horizo鈥?  GET|HEAD   monitor/api/monitoring/{tag} horizon.monitoring-tag.paginate 鈥?L鈥?  DELETE     monitor/api/monitoring/{tag} horizon.monitoring-tag.destroy 鈥?La鈥?  GET|HEAD   monitor/api/stats horizon.stats.index 鈥?Laravel\Horizon 鈥?Dashbo鈥?  GET|HEAD   monitor/api/workload horizon.workload.index 鈥?Laravel\Horizon 鈥?鈥?
+                                                          Showing [225] routes
+

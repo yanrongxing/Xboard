@@ -15,6 +15,13 @@ use Illuminate\Http\Request;
 
 class InviteController extends Controller
 {
+    /**
+     * 生成新的邀请码
+     * 
+     * 用户生成一个属于自己的推广邀请码（有创建数量上限限制）。
+     * 
+     * @responseField data bool 成功为 true
+     */
     public function save(Request $request)
     {
         if (InviteCode::where('user_id', $request->user()->id)->where('status', 0)->count() >= admin_setting('invite_gen_limit', 5)) {
@@ -26,6 +33,15 @@ class InviteController extends Controller
         return $this->success($inviteCode->save());
     }
 
+    /**
+     * 获取返利佣金明细记录
+     * 
+     * 分页查询当前用户邀请下线后获得的每笔返利金额流水。
+     * 
+     * @queryParam current int 当前页码 Example: 1
+     * @queryParam page_size int 每页展示数量 Example: 10
+     * @responseField data array 佣金变动明细列表
+     */
     public function details(Request $request)
     {
         $current = $request->input('current') ? $request->input('current') : 1;
@@ -42,6 +58,14 @@ class InviteController extends Controller
         ]);
     }
 
+    /**
+     * 获取邀请面板统计信息
+     * 
+     * 一次性获取当前用户的专属邀请码、已邀请人数、确认中和已到账的佣金数额和提成比例。
+     * 
+     * @responseField data.codes array 用户的专属邀请码列表
+     * @responseField data.stat array 统计数组：[0=>已注册用户数, 1=>总计有效佣金, 2=>确认中佣金, 3=>当前抽成比例, 4=>当前可用佣金余额]
+     */
     public function fetch(Request $request)
     {
         $commission_rate = admin_setting('invite_commission', 10);

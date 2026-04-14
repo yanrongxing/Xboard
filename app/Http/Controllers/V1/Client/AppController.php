@@ -11,6 +11,16 @@ use Symfony\Component\Yaml\Yaml;
 
 class AppController extends Controller
 {
+    /**
+     * 获取客户端配置(Clash)
+     * 
+     * 该接口主要用于定制化客户端获取Clash规格的YAML格式配置。
+     * 根据当前登录用户是否具备有效订阅，返回包含相应节点代理信息的配置文件。
+     * 
+     * @responseField proxies array 代理节点列表
+     * @responseField proxy-groups array 选路组配置
+     * @response 200 plain/text
+     */
     public function getConfig(Request $request)
     {
         $servers = [];
@@ -59,6 +69,18 @@ class AppController extends Controller
         return(Yaml::dump($config));
     }
 
+    /**
+     * 获取客户端最新版本
+     * 
+     * 检测各个平台 (Windows, macOS, Android) 配置中的最新可用版本及下载链接，用于引导客户下载升级。
+     * 
+     * @responseField data.windows_version string Windows客户端版本号
+     * @responseField data.windows_download_url string Windows客户端下载直链
+     * @responseField data.macos_version string macOS客户端版本号
+     * @responseField data.macos_download_url string macOS客户端下载直链
+     * @responseField data.android_version string Android客户端版本号
+     * @responseField data.android_download_url string Android客户端下载直链
+     */
     public function getVersion(Request $request)
     {
         if (strpos($request->header('user-agent'), 'tidalab/4.0.0') !== false

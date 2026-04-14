@@ -22,6 +22,14 @@ class TelegramController extends Controller
         $this->userService = $userService;
     }
 
+    /**
+     * Telegram Bot Webhook 回调地址
+     * 
+     * 用于接收 Telegram 服务器端推送过来的用户交互消息、加群请求等，通过 Hook 机制分发处理逻辑。
+     * 该地址高度保密且需携带设定好的 accessToken 防止被恶意请求。
+     * 
+     * @bodyParam access_token string required Telegram通信密钥配置 Example: md5string
+     */
     public function webhook(Request $request): void
     {
         $expectedToken = md5(admin_setting('telegram_bot_token'));

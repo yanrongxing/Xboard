@@ -18,6 +18,18 @@ class PlanController extends Controller
     {
         $this->planService = $planService;
     }
+    /**
+     * 获取订阅计划列表/详情
+     * 
+     * 用于用户侧拉取当前站点的所有可售订阅套餐，或者查看某个具体套餐的详情。
+     * 用户权限不足时无法查看到隐藏套餐。
+     * 
+     * @queryParam id int 可选，传入具体订阅计划ID获取详细信息 Example: 1
+     * @responseField data.id int 订阅计划ID
+     * @responseField data.name string 套餐名称
+     * @responseField data.content string 套餐详情介绍
+     * @responseField data.month_price numeric 月付价格
+     */
     public function fetch(Request $request)
     {
         $user = User::find($request->user()->id);

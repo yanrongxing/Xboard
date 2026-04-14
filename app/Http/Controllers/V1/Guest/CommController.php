@@ -10,6 +10,13 @@ use Illuminate\Support\Facades\Http;
 
 class CommController extends Controller
 {
+    /**
+     * 获取访客公共配置
+     * 
+     * 在用户未登录状态下，前端拉取站点配置参数（包括验证码密钥、注册限制和基础网站信息等）。
+     * 
+     * @responseField data object 返回前台必要的站点公共配置属性集
+     */
     public function config()
     {
         $data = [
