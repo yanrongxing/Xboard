@@ -111,6 +111,8 @@ class PluginController extends Controller
                         'config' => $pluginConfig,
                         'readme' => $readmeContent,
                         'need_upgrade' => $needUpgrade,
+                        'admin_menus' => $config['admin_menus'] ?? null,
+                        'admin_crud' => $config['admin_crud'] ?? null,
                     ];
                 }
             }
