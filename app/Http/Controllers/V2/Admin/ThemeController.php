@@ -19,7 +19,9 @@ class ThemeController extends Controller
     }
 
     /**
-     * 上传新主题
+     * 上传扩展新主题皮肤包
+     * 
+     * 以 .zip 的标准主题规格文件上传到服务器中供前端挑选配置。
      * 
      * @throws ApiException
      */
@@ -85,7 +87,9 @@ class ThemeController extends Controller
     }
 
     /**
-     * 删除主题
+     * 删除物理皮肤结构
+     * 
+     * @bodyParam name string required 想要除去的主题唯一识别代称名
      */
     public function delete(Request $request)
     {
@@ -97,7 +101,7 @@ class ThemeController extends Controller
     }
 
     /**
-     * 获取所有主题和其配置列
+     * 获取已安装所有前端主题列表及启用情况
      *
      * @return \Illuminate\Http\JsonResponse
      */
@@ -111,7 +115,9 @@ class ThemeController extends Controller
     }
 
     /**
-     * 切换主题
+     * 切换平台默认主题为
+     * 
+     * @bodyParam name string required 被选定的主题特征名字
      */
     public function switchTheme(Request $request)
     {
@@ -123,7 +129,11 @@ class ThemeController extends Controller
     }
 
     /**
-     * 获取主题配置
+     * 获取主题下辖自定义配置表单项集
+     * 
+     * 大多高端主题带有自己专属的幻灯片、页脚修改、色卡调节设置可供调整。
+     * 
+     * @queryParam name string required 查询对应主题拥有的配置集
      */
     public function getThemeConfig(Request $request)
     {
@@ -135,7 +145,10 @@ class ThemeController extends Controller
     }
 
     /**
-     * 保存主题配置
+     * 固化更新当前这套特供主题选项
+     * 
+     * @bodyParam name string required 需要更新的是这套专属主题代称
+     * @bodyParam config object required 对象格式的该皮肤专属键值对应修改项
      */
     public function saveThemeConfig(Request $request)
     {

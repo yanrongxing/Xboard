@@ -15,6 +15,11 @@ class GiftCardController extends Controller
 {
     /**
      * 获取礼品卡模板列表
+     * 
+     * 罗列系统中所有的礼品卡原型模板，自带统计此模板已印刷及已消耗的兑换码数量。
+     * 
+     * @queryParam type int 过滤模板分类
+     * @queryParam page int 当前页码
      */
     public function templates(Request $request)
     {
@@ -70,6 +75,8 @@ class GiftCardController extends Controller
 
     /**
      * 创建礼品卡模板
+     * 
+     * 建立一张全新的礼品卡派发模板，设定基本属性、包含的面额或赠品种类。
      */
     public function createTemplate(Request $request)
     {
@@ -131,6 +138,8 @@ class GiftCardController extends Controller
 
     /**
      * 更新礼品卡模板
+     * 
+     * 更改或调整该原型卡包含的面额价值、限额限制等一切核心属性。不影响在这之前已印发的老卡但影响其后置消耗鉴定。
      */
     public function updateTemplate(Request $request)
     {
@@ -184,6 +193,10 @@ class GiftCardController extends Controller
 
     /**
      * 删除礼品卡模板
+     * 
+     * 如果该原型模板已经挂载了任何印刷批次的发放真卡记录，则无法直接删除模板。
+     * 
+     * @bodyParam id int required 需要被删除原型模板 ID
      */
     public function deleteTemplate(Request $request)
     {
@@ -215,7 +228,14 @@ class GiftCardController extends Controller
     }
 
     /**
-     * 生成兑换码
+     * 生成并印发兑换码
+     * 
+     * 基于选定的模板来执行印钱发码工序（最高单批发 10000 码）。并且可选择立即提取 CSV 文件流返回。
+     * 
+     * @bodyParam template_id int required 制版/模板ID
+     * @bodyParam count int required 生成码总量数目
+     * @bodyParam prefix string 码前缀（支持A-Z及数字）
+     * @bodyParam download_csv bool 传递 1 则返回包含这些码的CSV直下流文件
      */
     public function generateCodes(Request $request)
     {
@@ -335,7 +355,9 @@ class GiftCardController extends Controller
     }
 
     /**
-     * 获取兑换码列表
+     * 获取发放兑换码列表
+     * 
+     * 高级表格组件，分页获取查询所有的实体真卡卡密情况、是否被兑换、领奖时间等。
      */
     public function codes(Request $request)
     {
@@ -388,6 +410,9 @@ class GiftCardController extends Controller
 
     /**
      * 禁用/启用兑换码
+     * 
+     * @bodyParam id int required 实体子卡 ID
+     * @bodyParam action string required "disable" 或 "enable" 开关联动动作
      */
     public function toggleCode(Request $request)
     {
@@ -420,7 +445,11 @@ class GiftCardController extends Controller
     }
 
     /**
-     * 导出兑换码
+     * 导出兑换码(直接拉文件)
+     * 
+     * 再次向系统讨要之前的某个印发批次的纯净版纯文本包含每行一码文件的导出下载。
+     * 
+     * @bodyParam batch_id string required 相关批次号 Batch ID
      */
     public function exportCodes(Request $request)
     {
@@ -440,7 +469,9 @@ class GiftCardController extends Controller
     }
 
     /**
-     * 获取使用记录
+     * 获取用户使用核销记录
+     * 
+     * 透视追踪查阅用户在前端具体激活了哪张卡、得到了什么返金/时长等综合对账报表。
      */
     public function usages(Request $request)
     {
@@ -481,7 +512,9 @@ class GiftCardController extends Controller
     }
 
     /**
-     * 获取统计数据
+     * 获取礼品系统使用统计大盘数据
+     * 
+     * 面向控制台首页或统计报表界面输出各种汇总总量、时间分片折线使用率图表及占比情况。
      */
     public function statistics(Request $request)
     {

@@ -23,6 +23,8 @@ class TrafficResetController extends Controller
 
   /**
    * 获取流量重置日志列表
+   * 
+   * 查询记录下来的每一次针对具体用户的流量清重置日志事件。
    */
   public function logs(Request $request): JsonResponse
   {
@@ -111,6 +113,10 @@ class TrafficResetController extends Controller
 
   /**
    * 获取流量重置统计信息
+   * 
+   * 取近多少天内的自动清空和手动清空触发事件的数据占比饼图数据。
+   * 
+   * @queryParam days int 往前回溯天数 Example: 30
    */
   public function stats(Request $request): JsonResponse
   {
@@ -141,6 +147,11 @@ class TrafficResetController extends Controller
 
   /**
    * 手动重置用户流量
+   * 
+   * 管理员在后台直接清空重算目标用户累计已使用的上行和下行传输量（一键恢复初始额度）。
+   * 
+   * @bodyParam user_id int required 要清空清算的户主归属 ID
+   * @bodyParam reason string 手工重置说明/理由/备注
    */
   public function resetUser(Request $request): JsonResponse
   {
@@ -185,7 +196,11 @@ class TrafficResetController extends Controller
 
 
   /**
-   * 获取用户重置历史
+   * 获取单用户流量重置历史
+   * 
+   * 获取指定某位用户历次被清空其用量的详细存档追溯流。
+   * 
+   * @urlParam userId int required 要回溯日志的目标用户 ID
    */
   public function userHistory(Request $request, int $userId): JsonResponse
   {

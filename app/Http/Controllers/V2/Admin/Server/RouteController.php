@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Log;
 
 class RouteController extends Controller
 {
+    /**
+     * 拉出目前现役的全部路由策略/过滤分流策略
+     * 
+     * 此控制器专供于节点侧应用类似于V2ray/Xray的黑洞IP阻断策略与白名单DNS清洗列表管理查阅。
+     */
     public function fetch(Request $request)
     {
         $routes = ServerRoute::get();
@@ -18,6 +23,14 @@ class RouteController extends Controller
         ];
     }
 
+    /**
+     * 增加/更新定制拦截路由记录
+     * 
+     * @bodyParam id int 带入意味着覆盖这条记录的内容
+     * @bodyParam remarks string required 备忘名称
+     * @bodyParam match array required 需要拦截或放行的数组如 geosite:cn 或者 IP集合
+     * @bodyParam action string required 处理模式 in:block(阻断),direct(直行),dns(转包验证解析),proxy(强制兜底代理)
+     */
     public function save(Request $request)
     {
         $params = $request->validate([
@@ -52,6 +65,11 @@ class RouteController extends Controller
         }
     }
 
+    /**
+     * 删除不再使用或废弃掉的分流屏蔽策略指令
+     * 
+     * @bodyParam id int required 要拔除掉屏蔽策略表项的单条关联引索号
+     */
     public function drop(Request $request)
     {
         $route = ServerRoute::find($request->input('id'));

@@ -15,6 +15,13 @@ class ConfigController extends Controller
 {
 
 
+    /**
+     * 获取已有邮件模板列表
+     * 
+     * 读取并返回系统 view/mail 目录中支持的所有邮件模板文件名。
+     * 
+     * @responseField data array 邮件模板文件名数组
+     */
     public function getEmailTemplate()
     {
         $path = resource_path('views/mail/');
@@ -24,6 +31,13 @@ class ConfigController extends Controller
         return $this->success($files);
     }
 
+    /**
+     * 获取已有前端主题模板列表
+     * 
+     * 读取并返回系统 public/theme 目录中所有装载的主题文件夹名称。
+     * 
+     * @responseField data array 前端主题名称数组
+     */
     public function getThemeTemplate()
     {
         $path = public_path('theme/');
@@ -33,6 +47,11 @@ class ConfigController extends Controller
         return $this->success($files);
     }
 
+    /**
+     * 测试发送测试邮件
+     * 
+     * 利用管理员配置好的 SMTP 发信参数，给管理员自己的邮箱发一封测试邮件探针，用于效验发信配置是否连通。
+     */
     public function testSendMail(Request $request)
     {
         $mailLog = MailService::sendEmail([
@@ -49,6 +68,13 @@ class ConfigController extends Controller
             'data' => $mailLog,
         ]);
     }
+    /**
+     * 设定/更新 Telegram Webhook
+     * 
+     * 当管理员修改了系统绑定 TG 机器人的 Token 时，向 TG 官网服务器请求注册最新的回调 Webhook 地址。
+     * 
+     * @bodyParam telegram_bot_token string required Telegram Bot的密钥
+     */
     public function setTelegramWebhook(Request $request)
     {
         $hookUrl = $this->resolveTelegramWebhookUrl();
@@ -69,6 +95,13 @@ class ConfigController extends Controller
         ]);
     }
 
+    /**
+     * 获取系统全量配置
+     * 
+     * 获取后台各项模块设置，如：站点开启注册、订阅模板配置、安全策略阈值等。
+     * 
+     * @queryParam key string 特定配置分组的键名（可选，如：invite, site等）
+     */
     public function fetch(Request $request)
     {
         $key = $request->input('key');
@@ -209,6 +242,14 @@ class ConfigController extends Controller
         ];
     }
 
+    /**
+     * 保存系统配置修改
+     * 
+     * 用于管理员在配置中心进行各项变更后的保存下发。
+     * 
+     * @bodyParam app_name string 站点名称 (可选示例) 
+     * @bodyParam * mixed 被更改的其他配置 KV 键值对
+     */
     public function save(ConfigSave $request)
     {
         $data = $request->validated();

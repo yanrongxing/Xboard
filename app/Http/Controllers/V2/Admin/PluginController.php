@@ -25,6 +25,8 @@ class PluginController extends Controller
 
     /**
      * 获取所有插件类型
+     * 
+     * 读取系统内定义好的可用插件类型列表（如功能型、支付型）。
      */
     public function types()
     {
@@ -47,7 +49,10 @@ class PluginController extends Controller
     }
 
     /**
-     * 获取插件列表
+     * 获取已有插件列表
+     * 
+     * 读取在本地 `plugins/` 目录中的所有插件包，获取其元信息并在控制台展示。
+     * 支持查询特定的 type 类型过滤。
      */
     public function index(Request $request)
     {
@@ -117,7 +122,11 @@ class PluginController extends Controller
     }
 
     /**
-     * 安装插件
+     * 安装系统插件
+     * 
+     * 为某个合法存在于内部的插件文件进行挂载和数据库环境搭建初始化。
+     * 
+     * @bodyParam code string required 目标插件对应的包名代码
      */
     public function install(Request $request)
     {
@@ -139,6 +148,10 @@ class PluginController extends Controller
 
     /**
      * 卸载插件
+     * 
+     * 需要其被禁用后方可彻底卸载清除环境资产。
+     * 
+     * @bodyParam code string required 目标卸载的特征包名
      */
     public function uninstall(Request $request)
     {
@@ -167,7 +180,11 @@ class PluginController extends Controller
     }
 
     /**
-     * 升级插件
+     * 升级更新插件
+     * 
+     * 控制台检测到本地包文件 Version 大于数据库记载 Version 时可调用自动更新。
+     * 
+     * @bodyParam code string required 想要升级打补丁的特征包名
      */
     public function upgrade(Request $request)
     {
@@ -187,7 +204,9 @@ class PluginController extends Controller
     }
 
     /**
-     * 启用插件
+     * 启动/启用插件功能
+     * 
+     * @bodyParam code string required 被操作插件特征包名
      */
     public function enable(Request $request)
     {
@@ -208,7 +227,9 @@ class PluginController extends Controller
     }
 
     /**
-     * 禁用插件
+     * 关停/禁用插件
+     * 
+     * @bodyParam code string required 被操作插件特征包名
      */
     public function disable(Request $request)
     {
@@ -224,7 +245,9 @@ class PluginController extends Controller
     }
 
     /**
-     * 获取插件配置
+     * 获取某个插件运行选项配置
+     * 
+     * @queryParam code string required 对应参数的插件包名
      */
     public function getConfig(Request $request)
     {
@@ -245,7 +268,12 @@ class PluginController extends Controller
     }
 
     /**
-     * 更新插件配置
+     * 提交保存插件设置
+     * 
+     * 对插件自己抛出定义的需要表单配置执行设值。
+     * 
+     * @bodyParam code string required 配置目标关联包名
+     * @bodyParam config array required 配置键值对
      */
     public function updateConfig(Request $request)
     {
@@ -271,7 +299,9 @@ class PluginController extends Controller
     }
 
     /**
-     * 上传插件
+     * 全新上传自用插件 zip 压缩包
+     * 
+     * 上传符合 xboard 的专用结构打包 .zip。
      */
     public function upload(Request $request)
     {
@@ -302,7 +332,11 @@ class PluginController extends Controller
     }
 
     /**
-     * 删除插件
+     * 物理删除无用的插件代码结构
+     * 
+     * 必须已经卸载，系统内置保护核心插件不可被删除。
+     * 
+     * @bodyParam code string required 要删代码包的插件标识
      */
     public function delete(Request $request)
     {

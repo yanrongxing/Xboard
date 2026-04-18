@@ -18,10 +18,14 @@ class AssignGroup extends Strategy
         if (strpos($uri, 'api/v2/57a7189f') !== false) {
             $groupName = '管理后台 API (Admin)';
             $parts = explode('/', $uri);
-            // $parts will be ['api', 'v2', '57a7189f', 'something']
-            if (isset($parts[4])) {
-                $subgroupName = ucfirst($parts[4]) . ' 模块';
-            }
+            if (isset($parts[3])) {
+                $subName = ucfirst($parts[3]);
+                // Special handling for server/group, server/manage, server/route
+                if (strtolower($subName) === 'server' && isset($parts[4])) {
+                    $subName .= '\\' . ucfirst($parts[4]);
+                }
+                $subgroupName = $subName . ' 模块';
+            } 
         } 
         // User/Client/Guest API
         elseif (strpos($uri, 'api/v1/user') !== false || strpos($uri, 'api/v2/user') !== false ||

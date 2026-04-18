@@ -34,6 +34,12 @@ class TicketController extends Controller
             });
         }
     }
+    /**
+     * 获取工单列表详情
+     * 
+     * 管理后台分页提取所有用户的客服工单（支持按状态分类显示未完成和已完成工单等不同情况）。
+     * 若带 id，则会转为特定工单详情的呈现。
+     */
     public function fetch(Request $request)
     {
         if ($request->input('id')) {
@@ -102,6 +108,14 @@ class TicketController extends Controller
         ]);
     }
 
+    /**
+     * 回复工单消息
+     * 
+     * 客服管理人员进行工单流的文字回复推送。
+     * 
+     * @bodyParam id int required 需要追加回复文本的目标工单ID
+     * @bodyParam message string required 具体的客服回复段落正文文本
+     */
     public function reply(Request $request)
     {
         $request->validate([
@@ -120,6 +134,13 @@ class TicketController extends Controller
         return $this->success(true);
     }
 
+    /**
+     * 强制关闭截断工单
+     * 
+     * 针对已处理完毕或者无需回复的情况将该工单状态扭转至“已关闭”。
+     * 
+     * @bodyParam id int required 需要被彻底关闭不再接受续加信息的工单 ID
+     */
     public function close(Request $request)
     {
         $request->validate([
@@ -139,6 +160,13 @@ class TicketController extends Controller
         }
     }
 
+    /**
+     * 获取单条工单流详情
+     * 
+     * 在带有资源 URL 参数的路由查询方法下提取详情的方法。
+     * 
+     * @urlParam ticketId int required 工单的关联自增资源ID
+     */
     public function show($ticketId)
     {
         $ticket = Ticket::with([

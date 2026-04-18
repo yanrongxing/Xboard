@@ -37,6 +37,15 @@ class CouponController extends Controller
             });
         }
     }
+    /**
+     * 获取优惠券列表
+     * 
+     * 支持多条件过滤检索和自定义排序。
+     * 
+     * @queryParam current int 当前翻页页码 Example: 1
+     * @queryParam pageSize int 每页条数 Example: 10
+     * @queryParam filter array 高级过滤项数组
+     */
     public function fetch(Request $request)
     {
         $current = $request->input('current', 1);
@@ -49,6 +58,14 @@ class CouponController extends Controller
         return $this->paginate($coupons);
     }
 
+    /**
+     * 更新优惠券信息
+     * 
+     * 主要用于单独更改某优惠券是否显示/可用状态。
+     * 
+     * @bodyParam id int required 需要更新的优惠券 ID
+     * @bodyParam show bool 是否在前台可见
+     */
     public function update(Request $request)
     {
         $params = $request->validate([
@@ -72,6 +89,13 @@ class CouponController extends Controller
         }
     }
 
+    /**
+     * 切换优惠券激活状态
+     * 
+     * 直接对某一张优惠券的可见/可用状态 (`show`) 进行反转（开变关，关变开）。
+     * 
+     * @bodyParam id int required 优惠券 ID
+     */
     public function show(Request $request)
     {
         $request->validate([
@@ -91,6 +115,16 @@ class CouponController extends Controller
         return $this->success(true);
     }
 
+    /**
+     * 生成/编辑优惠券
+     * 
+     * 批量或单张生成特定的面额、比例以及设定特定套餐可用的优惠券。也可用于编辑旧活动优惠券。
+     * 若包含 `generate_count` 参数，则是执行大批量印钞生成操作。
+     * 
+     * @bodyParam generate_count int 选填，批量生成数量 (若有此项则走批量生成逻辑并返回csv文本下载)
+     * @bodyParam code string 选填，兑换码（如为空则由系统随机生成8位字符）
+     * @bodyParam value int required 优惠面额或者比例（若是比例则 10 代表 10%）
+     */
     public function generate(CouponGenerate $request)
     {
         if ($request->input('generate_count')) {
@@ -165,6 +199,13 @@ class CouponController extends Controller
         echo $data;
     }
 
+    /**
+     * 彻底删除优惠券
+     * 
+     * 将优惠券实体从数据库中连根拔起地抹除记录。
+     * 
+     * @bodyParam id int required 需要销毁的优惠券ID
+     */
     public function drop(Request $request)
     {
         $request->validate([

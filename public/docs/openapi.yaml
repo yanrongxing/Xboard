@@ -182,7 +182,7 @@ paths:
                 cpu:
                   type: number
                   description: 'validation.min validation.max.'
-                  example: 5
+                  example: 14
                 mem:
                   type: object
                   description: ''
@@ -191,11 +191,11 @@ paths:
                     total:
                       type: integer
                       description: validation.min.
-                      example: 87
+                      example: 6
                     used:
                       type: integer
                       description: validation.min.
-                      example: 46
+                      example: 73
                   required:
                     - total
                     - used
@@ -207,11 +207,11 @@ paths:
                     total:
                       type: integer
                       description: validation.min.
-                      example: 41
+                      example: 9
                     used:
                       type: integer
                       description: validation.min.
-                      example: 17
+                      example: 20
                   required:
                     - total
                     - used
@@ -223,11 +223,11 @@ paths:
                     total:
                       type: integer
                       description: validation.min.
-                      example: 61
+                      example: 53
                     used:
                       type: integer
                       description: validation.min.
-                      example: 14
+                      example: 0
                   required:
                     - total
                     - used
@@ -329,11 +329,11 @@ paths:
                 node_id:
                   type: string
                   description: ''
-                  example: quibusdam
+                  example: vel
                 local_port:
                   type: string
                   description: ''
-                  example: sed
+                  example: qui
               required:
                 - node_id
                 - local_port
@@ -575,7 +575,7 @@ paths:
                 cpu:
                   type: number
                   description: 'validation.min validation.max.'
-                  example: 19
+                  example: 20
                 mem:
                   type: object
                   description: ''
@@ -584,11 +584,11 @@ paths:
                     total:
                       type: integer
                       description: validation.min.
-                      example: 26
+                      example: 49
                     used:
                       type: integer
                       description: validation.min.
-                      example: 27
+                      example: 56
                   required:
                     - total
                     - used
@@ -600,11 +600,11 @@ paths:
                     total:
                       type: integer
                       description: validation.min.
-                      example: 62
+                      example: 60
                     used:
                       type: integer
                       description: validation.min.
-                      example: 10
+                      example: 29
                   required:
                     - total
                     - used
@@ -616,11 +616,11 @@ paths:
                     total:
                       type: integer
                       description: validation.min.
-                      example: 85
+                      example: 41
                     used:
                       type: integer
                       description: validation.min.
-                      example: 68
+                      example: 5
                   required:
                     - total
                     - used
@@ -637,32 +637,32 @@ paths:
           in: query
           name: flag
           description: '强制指定客户端类型标识(如 clash, v2ray, shadowrocket)'
-          example: ad
+          example: error
           required: false
           schema:
             type: string
             description: '强制指定客户端类型标识(如 clash, v2ray, shadowrocket)'
-            example: ad
+            example: error
         -
           in: query
           name: types
           description: '取特定的节点类型（如 vmess|vless|trojan)'
-          example: neque
+          example: quas
           required: false
           schema:
             type: string
             description: '取特定的节点类型（如 vmess|vless|trojan)'
-            example: neque
+            example: quas
         -
           in: query
           name: filter
           description: 只保留包含特定关键字名称的节点
-          example: sequi
+          example: ex
           required: false
           schema:
             type: string
             description: 只保留包含特定关键字名称的节点
-            example: sequi
+            example: ex
       responses:
         200:
           description: ''
@@ -683,17 +683,17 @@ paths:
                 types:
                   type: string
                   description: ''
-                  example: inventore
+                  example: aut
                   nullable: true
                 filter:
                   type: string
                   description: ''
-                  example: et
+                  example: quas
                   nullable: true
                 flag:
                   type: string
                   description: ''
-                  example: ut
+                  example: nostrum
                   nullable: true
       security: []
   /api/v1/client/app/getConfig:
@@ -955,7 +955,7 @@ paths:
         in: path
         name: method
         description: ''
-        example: sed
+        example: natus
         required: true
         schema:
           type: string
@@ -963,7 +963,7 @@ paths:
         in: path
         name: uuid
         description: ''
-        example: ff631a76-04f6-3eb6-bfca-a129371a5d58
+        example: 145d25e7-6a57-3fa8-b247-30ebcaf7daa8
         required: true
         schema:
           type: string
@@ -1092,11 +1092,11 @@ paths:
                 invite_code:
                   type: string
                   description: 邀请码（选填）
-                  example: deserunt
+                  example: ducimus
                 email_code:
                   type: string
                   description: 邮箱验证码（如果开启验证则必填）
-                  example: laboriosam
+                  example: iste
               required:
                 - email
                 - password
@@ -1139,32 +1139,32 @@ paths:
           in: query
           name: token
           description: 重定向Token（二选一）
-          example: aut
+          example: velit
           required: false
           schema:
             type: string
             description: 重定向Token（二选一）
-            example: aut
+            example: velit
         -
           in: query
           name: verify
           description: 验证Token（二选一）
-          example: fugiat
+          example: laudantium
           required: false
           schema:
             type: string
             description: 验证Token（二选一）
-            example: fugiat
+            example: laudantium
         -
           in: query
           name: redirect
           description: 重定向路径
-          example: voluptatem
+          example: et
           required: false
           schema:
             type: string
             description: 重定向路径
-            example: voluptatem
+            example: et
       responses:
         302:
           description: ''
@@ -1172,7 +1172,7 @@ paths:
             text/plain:
               schema:
                 type: string
-                example: "<!DOCTYPE html>\n<html>\n    <head>\n        <meta charset=\"UTF-8\" />\n        <meta http-equiv=\"refresh\" content=\"0;url='http://localhost/#/login?verify=aut&amp;redirect=voluptatem'\" />\n\n        <title>Redirecting to http://localhost/#/login?verify=aut&amp;redirect=voluptatem</title>\n    </head>\n    <body>\n        Redirecting to <a href=\"http://localhost/#/login?verify=aut&amp;redirect=voluptatem\">http://localhost/#/login?verify=aut&amp;redirect=voluptatem</a>.\n    </body>\n</html>"
+                example: "<!DOCTYPE html>\n<html>\n    <head>\n        <meta charset=\"UTF-8\" />\n        <meta http-equiv=\"refresh\" content=\"0;url='http://localhost/#/login?verify=velit&amp;redirect=et'\" />\n\n        <title>Redirecting to http://localhost/#/login?verify=velit&amp;redirect=et</title>\n    </head>\n    <body>\n        Redirecting to <a href=\"http://localhost/#/login?verify=velit&amp;redirect=et\">http://localhost/#/login?verify=velit&amp;redirect=et</a>.\n    </body>\n</html>"
       tags:
         - '用户端 API (User & Guest)'
       security: []
@@ -1203,7 +1203,7 @@ paths:
                 email_code:
                   type: string
                   description: 邮件里的找回验证码
-                  example: qui
+                  example: odio
               required:
                 - email
                 - password
@@ -1228,11 +1228,11 @@ paths:
                 auth_data:
                   type: string
                   description: '认证凭据 (Header/Authorization同样有效)'
-                  example: impedit
+                  example: architecto
                 redirect:
                   type: string
                   description: 登录成功后的跳转地址
-                  example: ut
+                  example: non
       security: []
   /api/v1/passport/auth/loginWithMailLink:
     post:
@@ -1285,7 +1285,7 @@ paths:
                 turnstile:
                   type: string
                   description: Turnstile/recaptcha等极验证码的Token（若系统开启人机验证则必填）
-                  example: magnam
+                  example: labore
               required:
                 - email
       security: []
@@ -1672,7 +1672,7 @@ paths:
                 coupon_code:
                   type: string
                   description: 优惠券码（可选）
-                  example: hic
+                  example: magni
               required:
                 - plan_id
                 - period
@@ -1704,7 +1704,7 @@ paths:
                 token:
                   type: string
                   description: Stripe支付Token等相关参数（可选）
-                  example: assumenda
+                  example: veniam
               required:
                 - trade_no
                 - method
@@ -1810,7 +1810,7 @@ paths:
                 trade_no:
                   type: string
                   description: ''
-                  example: sit
+                  example: et
               required:
                 - trade_no
       security: []
@@ -1868,7 +1868,7 @@ paths:
                 status:
                   type: integer
                   description: ''
-                  example: 0
+                  example: 3
                   enum:
                     - 0
                     - 1
@@ -2369,11 +2369,11 @@ paths:
                 plan_id:
                   type: integer
                   description: 拟购买的订阅套餐ID
-                  example: 10
+                  example: 15
                 period:
                   type: string
                   description: '拟购买的时长类型（如 month, year等）'
-                  example: perspiciatis
+                  example: nam
               required:
                 - code
       security: []
@@ -2488,11 +2488,11 @@ paths:
                 page:
                   type: integer
                   description: validation.min.
-                  example: 41
+                  example: 17
                 per_page:
                   type: integer
                   description: 'validation.min validation.max.'
-                  example: 19
+                  example: 20
       security: []
   /api/v1/user/gift-card/detail:
     get:
@@ -2549,7 +2549,7 @@ paths:
                 id:
                   type: integer
                   description: 'The <code>id</code> of an existing record in the v2_gift_card_usage table.'
-                  example: 5
+                  example: 8
               required:
                 - id
       security: []
@@ -2701,12 +2701,12 @@ paths:
           in: query
           name: keyword
           description: 关键字搜索标题或内容
-          example: neque
+          example: fugiat
           required: false
           schema:
             type: string
             description: 关键字搜索标题或内容
-            example: neque
+            example: fugiat
       responses:
         403:
           description: ''
@@ -2746,17 +2746,17 @@ paths:
                 id:
                   type: integer
                   description: validation.min.
-                  example: 66
+                  example: 8
                   nullable: true
                 language:
                   type: string
                   description: validation.max.
-                  example: xdmxvv
+                  example: rqf
                   nullable: true
                 keyword:
                   type: string
                   description: validation.max.
-                  example: vabbceunslbzlj
+                  example: zetngly
                   nullable: true
       security: []
   /api/v1/user/stat/getTrafficLog:
@@ -2893,11 +2893,11 @@ paths:
                 invite_code:
                   type: string
                   description: 邀请码（选填）
-                  example: dignissimos
+                  example: deleniti
                 email_code:
                   type: string
                   description: 邮箱验证码（如果开启验证则必填）
-                  example: at
+                  example: voluptatibus
               required:
                 - email
                 - password
@@ -2940,32 +2940,32 @@ paths:
           in: query
           name: token
           description: 重定向Token（二选一）
-          example: est
+          example: corporis
           required: false
           schema:
             type: string
             description: 重定向Token（二选一）
-            example: est
+            example: corporis
         -
           in: query
           name: verify
           description: 验证Token（二选一）
-          example: consequatur
+          example: voluptatem
           required: false
           schema:
             type: string
             description: 验证Token（二选一）
-            example: consequatur
+            example: voluptatem
         -
           in: query
           name: redirect
           description: 重定向路径
-          example: placeat
+          example: ratione
           required: false
           schema:
             type: string
             description: 重定向路径
-            example: placeat
+            example: ratione
       responses:
         302:
           description: ''
@@ -2973,7 +2973,7 @@ paths:
             text/plain:
               schema:
                 type: string
-                example: "<!DOCTYPE html>\n<html>\n    <head>\n        <meta charset=\"UTF-8\" />\n        <meta http-equiv=\"refresh\" content=\"0;url='http://localhost/#/login?verify=est&amp;redirect=placeat'\" />\n\n        <title>Redirecting to http://localhost/#/login?verify=est&amp;redirect=placeat</title>\n    </head>\n    <body>\n        Redirecting to <a href=\"http://localhost/#/login?verify=est&amp;redirect=placeat\">http://localhost/#/login?verify=est&amp;redirect=placeat</a>.\n    </body>\n</html>"
+                example: "<!DOCTYPE html>\n<html>\n    <head>\n        <meta charset=\"UTF-8\" />\n        <meta http-equiv=\"refresh\" content=\"0;url='http://localhost/#/login?verify=corporis&amp;redirect=ratione'\" />\n\n        <title>Redirecting to http://localhost/#/login?verify=corporis&amp;redirect=ratione</title>\n    </head>\n    <body>\n        Redirecting to <a href=\"http://localhost/#/login?verify=corporis&amp;redirect=ratione\">http://localhost/#/login?verify=corporis&amp;redirect=ratione</a>.\n    </body>\n</html>"
       tags:
         - '用户端 API (User & Guest)'
       security: []
@@ -3004,7 +3004,7 @@ paths:
                 email_code:
                   type: string
                   description: 邮件里的找回验证码
-                  example: inventore
+                  example: reprehenderit
               required:
                 - email
                 - password
@@ -3029,11 +3029,11 @@ paths:
                 auth_data:
                   type: string
                   description: '认证凭据 (Header/Authorization同样有效)'
-                  example: quia
+                  example: rem
                 redirect:
                   type: string
                   description: 登录成功后的跳转地址
-                  example: maxime
+                  example: occaecati
       security: []
   /api/v2/passport/auth/loginWithMailLink:
     post:
@@ -3086,7 +3086,7 @@ paths:
                 turnstile:
                   type: string
                   description: Turnstile/recaptcha等极验证码的Token（若系统开启人机验证则必填）
-                  example: omnis
+                  example: quis
               required:
                 - email
       security: []
@@ -3186,10 +3186,20 @@ paths:
       security: []
   /api/v2/57a7189f/config/fetch:
     get:
-      summary: ''
-      operationId: getApiV257a7189fConfigFetch
-      description: ''
-      parameters: []
+      summary: 获取系统全量配置
+      operationId: ''
+      description: 获取后台各项模块设置，如：站点开启注册、订阅模板配置、安全策略阈值等。
+      parameters:
+        -
+          in: query
+          name: key
+          description: '特定配置分组的键名（可选，如：invite, site等）'
+          example: voluptas
+          required: false
+          schema:
+            type: string
+            description: '特定配置分组的键名（可选，如：invite, site等）'
+            example: voluptas
       responses:
         403:
           description: ''
@@ -3208,9 +3218,9 @@ paths:
       security: []
   /api/v2/57a7189f/config/save:
     post:
-      summary: ''
-      operationId: postApiV257a7189fConfigSave
-      description: ''
+      summary: 保存系统配置修改
+      operationId: ''
+      description: 用于管理员在配置中心进行各项变更后的保存下发。
       parameters: []
       responses: {  }
       tags:
@@ -3229,12 +3239,12 @@ paths:
                 invite_commission:
                   type: integer
                   description: ''
-                  example: 9
+                  example: 6
                   nullable: true
                 invite_gen_limit:
                   type: integer
                   description: ''
-                  example: 20
+                  example: 17
                   nullable: true
                 invite_never_expire:
                   type: string
@@ -3251,7 +3261,7 @@ paths:
                 commission_withdraw_limit:
                   type: number
                   description: ''
-                  example: 35.19
+                  example: 98094.909526
                   nullable: true
                 commission_withdraw_method:
                   type: object
@@ -3270,22 +3280,22 @@ paths:
                 commission_distribution_l1:
                   type: number
                   description: ''
-                  example: 63144.274
+                  example: 21326.3396
                   nullable: true
                 commission_distribution_l2:
                   type: number
                   description: ''
-                  example: 125419.251
+                  example: 4597.3
                   nullable: true
                 commission_distribution_l3:
                   type: number
                   description: ''
-                  example: 45.7990771
+                  example: 1627643.0
                   nullable: true
                 logo:
                   type: string
                   description: 'Must be a valid URL.'
-                  example: 'http://www.windler.info/sit-asperiores-consectetur-debitis-enim-commodi-in'
+                  example: 'http://www.maggio.com/'
                   nullable: true
                 force_https:
                   type: string
@@ -3297,8 +3307,8 @@ paths:
                   example: null
                 app_name:
                   type: string
-                  description: ''
-                  example: null
+                  description: '站点名称 (可选示例)'
+                  example: provident
                 app_description:
                   type: string
                   description: ''
@@ -3306,7 +3316,7 @@ paths:
                 app_url:
                   type: string
                   description: 'Must be a valid URL.'
-                  example: 'http://www.bartoletti.com/et-totam-reprehenderit-ullam-ut'
+                  example: 'http://www.schaefer.info/porro-magni-possimus-dignissimos-aut'
                   nullable: true
                 subscribe_url:
                   type: string
@@ -3320,15 +3330,15 @@ paths:
                 try_out_plan_id:
                   type: integer
                   description: ''
-                  example: 5
+                  example: 18
                 try_out_hour:
                   type: number
                   description: ''
-                  example: 18.921254
+                  example: 6787.0
                 tos_url:
                   type: string
                   description: 'Must be a valid URL.'
-                  example: 'http://johns.com/illo-alias-perferendis-et-possimus-et-rem'
+                  example: 'http://harris.com/'
                   nullable: true
                 currency:
                   type: string
@@ -3349,7 +3359,7 @@ paths:
                 reset_traffic_method:
                   type: string
                   description: ''
-                  example: 4
+                  example: 3
                   enum:
                     - 0
                     - 1
@@ -3387,20 +3397,20 @@ paths:
                 server_token:
                   type: string
                   description: validation.min.
-                  example: gaigyiquluabwsjvlslbspxizpxfthdcosalwbqyeuglkohulwaaddfcwwqcrj
+                  example: fhxjmzaonxolpppcvzzebichreyoptkbxuzyqlhmokiqsaehilm
                   nullable: true
                 server_pull_interval:
                   type: integer
                   description: ''
-                  example: 13
+                  example: 1
                 server_push_interval:
                   type: integer
                   description: ''
-                  example: 9
+                  example: 13
                 device_limit_mode:
                   type: integer
                   description: ''
-                  example: 14
+                  example: 20
                 server_ws_enable:
                   type: boolean
                   description: ''
@@ -3408,7 +3418,7 @@ paths:
                 server_ws_url:
                   type: string
                   description: 'Must be a valid URL.'
-                  example: 'http://hoeger.com/'
+                  example: 'http://www.grimes.org/est-sit-quisquam-odio-similique-libero-autem.html'
                   nullable: true
                 frontend_theme:
                   type: string
@@ -3417,7 +3427,7 @@ paths:
                 frontend_theme_sidebar:
                   type: string
                   description: ''
-                  example: dark
+                  example: light
                   enum:
                     - dark
                     - light
@@ -3425,7 +3435,7 @@ paths:
                 frontend_theme_header:
                   type: string
                   description: ''
-                  example: dark
+                  example: light
                   enum:
                     - dark
                     - light
@@ -3433,7 +3443,7 @@ paths:
                 frontend_theme_color:
                   type: string
                   description: ''
-                  example: black
+                  example: default
                   enum:
                     - default
                     - darkblue
@@ -3443,7 +3453,7 @@ paths:
                 frontend_background_url:
                   type: string
                   description: 'Must be a valid URL.'
-                  example: 'http://www.schinner.net/dolores-voluptatem-at-ducimus-recusandae-eaque.html'
+                  example: 'http://www.larkin.com/voluptates-facere-facilis-iste.html'
                   nullable: true
                 email_template:
                   type: string
@@ -3488,7 +3498,7 @@ paths:
                 telegram_webhook_url:
                   type: string
                   description: 'Must be a valid URL.'
-                  example: 'http://wuckert.com/perferendis-neque-et-aut-tempora'
+                  example: 'https://collier.org/totam-animi-nisi-in-est-quod-iusto-ratione.html'
                   nullable: true
                 telegram_discuss_id:
                   type: string
@@ -3501,7 +3511,7 @@ paths:
                 telegram_discuss_link:
                   type: string
                   description: 'Must be a valid URL.'
-                  example: 'https://www.steuber.org/numquam-ut-optio-ut-ad-et-suscipit-rerum'
+                  example: 'https://www.mueller.com/alias-omnis-velit-et-in-rerum-assumenda'
                   nullable: true
                 windows_version:
                   type: string
@@ -3530,7 +3540,7 @@ paths:
                 email_whitelist_enable:
                   type: boolean
                   description: ''
-                  example: false
+                  example: true
                 email_whitelist_suffix:
                   type: object
                   description: ''
@@ -3540,7 +3550,7 @@ paths:
                 email_gmail_limit_enable:
                   type: boolean
                   description: ''
-                  example: false
+                  example: true
                 captcha_enable:
                   type: boolean
                   description: ''
@@ -3588,7 +3598,7 @@ paths:
                 email_verify:
                   type: boolean
                   description: ''
-                  example: true
+                  example: false
                 safe_mode_enable:
                   type: boolean
                   description: ''
@@ -3596,19 +3606,19 @@ paths:
                 register_limit_by_ip_enable:
                   type: boolean
                   description: ''
-                  example: false
+                  example: true
                 register_limit_count:
                   type: integer
                   description: ''
-                  example: 2
+                  example: 1
                 register_limit_expire:
                   type: integer
                   description: ''
-                  example: 11
+                  example: 5
                 secure_path:
                   type: string
                   description: 'Must match the regex /^[\w-]*$/. validation.min.'
-                  example: uibltkdzabq
+                  example: phvbpiurpslxqbykqjvilcfobas
                 password_limit_enable:
                   type: boolean
                   description: ''
@@ -3616,11 +3626,11 @@ paths:
                 password_limit_count:
                   type: integer
                   description: ''
-                  example: 6
+                  example: 10
                 password_limit_expire:
                   type: integer
                   description: ''
-                  example: 18
+                  example: 6
                 default_remind_expire:
                   type: boolean
                   description: ''
@@ -3628,7 +3638,7 @@ paths:
                 default_remind_traffic:
                   type: boolean
                   description: ''
-                  example: true
+                  example: false
                 subscribe_template_singbox:
                   type: string
                   description: ''
@@ -3659,12 +3669,16 @@ paths:
                   description: ''
                   example: null
                   nullable: true
+                '*':
+                  type: mixed
+                  description: '被更改的其他配置 KV 键值对'
+                  example: assumenda
       security: []
   /api/v2/57a7189f/config/getEmailTemplate:
     get:
-      summary: ''
-      operationId: getApiV257a7189fConfigGetEmailTemplate
-      description: ''
+      summary: 获取已有邮件模板列表
+      operationId: ''
+      description: '读取并返回系统 view/mail 目录中支持的所有邮件模板文件名。'
       parameters: []
       responses:
         403:
@@ -3684,9 +3698,9 @@ paths:
       security: []
   /api/v2/57a7189f/config/getThemeTemplate:
     get:
-      summary: ''
-      operationId: getApiV257a7189fConfigGetThemeTemplate
-      description: ''
+      summary: 获取已有前端主题模板列表
+      operationId: ''
+      description: '读取并返回系统 public/theme 目录中所有装载的主题文件夹名称。'
       parameters: []
       responses:
         403:
@@ -3706,19 +3720,32 @@ paths:
       security: []
   /api/v2/57a7189f/config/setTelegramWebhook:
     post:
-      summary: ''
-      operationId: postApiV257a7189fConfigSetTelegramWebhook
-      description: ''
+      summary: '设定/更新 Telegram Webhook'
+      operationId: TelegramWebhook
+      description: '当管理员修改了系统绑定 TG 机器人的 Token 时，向 TG 官网服务器请求注册最新的回调 Webhook 地址。'
       parameters: []
       responses: {  }
       tags:
         - '管理后台 API (Admin)'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                telegram_bot_token:
+                  type: string
+                  description: 'Telegram Bot的密钥'
+                  example: ipsam
+              required:
+                - telegram_bot_token
       security: []
   /api/v2/57a7189f/config/testSendMail:
     post:
-      summary: ''
-      operationId: postApiV257a7189fConfigTestSendMail
-      description: ''
+      summary: 测试发送测试邮件
+      operationId: ''
+      description: '利用管理员配置好的 SMTP 发信参数，给管理员自己的邮箱发一封测试邮件探针，用于效验发信配置是否连通。'
       parameters: []
       responses: {  }
       tags:
@@ -3726,9 +3753,9 @@ paths:
       security: []
   /api/v2/57a7189f/plan/fetch:
     get:
-      summary: ''
-      operationId: getApiV257a7189fPlanFetch
-      description: ''
+      summary: 获取后台订阅套餐列表
+      operationId: ''
+      description: 查询系统中建立的所有商品套餐信息，并附带关联查询该套餐下当前正在活跃使用的人数。
       parameters: []
       responses:
         403:
@@ -3748,9 +3775,9 @@ paths:
       security: []
   /api/v2/57a7189f/plan/save:
     post:
-      summary: ''
-      operationId: postApiV257a7189fPlanSave
-      description: ''
+      summary: 创建或保存（修改）订阅套餐
+      operationId: ''
+      description: "录入全套新建的套餐基本信息、流量配额限制及标价内容。如果携带了 ID 则是修改现存套餐；\n修改时可勾选`force_update`来强制同步更新已购买此套餐的用户的流量/设备阈值。"
       parameters: []
       responses: {  }
       tags:
@@ -3764,54 +3791,54 @@ paths:
               properties:
                 id:
                   type: integer
-                  description: ''
-                  example: 10
+                  description: 如果是修改必须传原ID
+                  example: 3
                   nullable: true
                 name:
                   type: string
                   description: validation.max.
-                  example: mllrje
+                  example: utj
                 content:
                   type: string
                   description: ''
-                  example: eius
+                  example: ut
                   nullable: true
                 reset_traffic_method:
                   type: integer
                   description: ''
-                  example: 15
+                  example: 12
                   nullable: true
                 transfer_enable:
                   type: integer
                   description: validation.min.
-                  example: 11
+                  example: 34
                 prices:
                   type: array
                   description: validation.min.
                   example:
-                    - 29
+                    - 45
                   items:
                     type: number
                     nullable: true
                 group_id:
                   type: integer
                   description: ''
-                  example: 8
+                  example: 10
                   nullable: true
                 speed_limit:
                   type: integer
                   description: validation.min.
-                  example: 83
+                  example: 63
                   nullable: true
                 device_limit:
                   type: integer
                   description: validation.min.
-                  example: 81
+                  example: 32
                   nullable: true
                 capacity_limit:
                   type: integer
                   description: validation.min.
-                  example: 47
+                  example: 55
                   nullable: true
                 tags:
                   type: object
@@ -3819,35 +3846,77 @@ paths:
                   example: null
                   properties: {  }
                   nullable: true
+                force_update:
+                  type: boolean
+                  description: 是否强制同步变更到存量用户身上
+                  example: false
               required:
                 - name
                 - transfer_enable
       security: []
   /api/v2/57a7189f/plan/drop:
     post:
-      summary: ''
-      operationId: postApiV257a7189fPlanDrop
-      description: ''
+      summary: 彻底删除某个订阅套餐
+      operationId: ''
+      description: 该操作只有在套餐未被任何用户订阅、且无关联订单购买记录时才能执行，否则应选择下架(隐藏)该套餐。
       parameters: []
       responses: {  }
       tags:
         - '管理后台 API (Admin)'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: 需要删除的套餐ID
+                  example: 3
+              required:
+                - id
       security: []
   /api/v2/57a7189f/plan/update:
     post:
-      summary: ''
-      operationId: postApiV257a7189fPlanUpdate
-      description: ''
+      summary: 快捷更新套餐状态（上下架/可续费）
+      operationId: ''
+      description: 仅快速更改套餐是否展示、是否允许购买、是否允许续费等单个开关按钮的状态。
       parameters: []
       responses: {  }
       tags:
         - '管理后台 API (Admin)'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: 所需更新的订阅套餐ID
+                  example: 12
+                show:
+                  type: boolean
+                  description: 前台是否展示
+                  example: false
+                renew:
+                  type: boolean
+                  description: 是否允许续费
+                  example: true
+                sell:
+                  type: boolean
+                  description: 是否允许新购
+                  example: true
+              required:
+                - id
       security: []
   /api/v2/57a7189f/plan/sort:
     post:
-      summary: ''
-      operationId: postApiV257a7189fPlanSort
-      description: ''
+      summary: 更新前台套餐展示排序
+      operationId: ''
+      description: 管理员在前端拖拽重新调整套餐卡片出场顺序后，提交通知的全量ID重排序列。
       parameters: []
       responses: {  }
       tags:
@@ -3860,18 +3929,22 @@ paths:
               type: object
               properties:
                 ids:
-                  type: object
-                  description: ''
-                  example: []
-                  properties: {  }
+                  type: array
+                  description: 套餐ID数组序列
+                  example:
+                    - 3
+                    - 1
+                    - 2
+                  items:
+                    type: string
               required:
                 - ids
       security: []
   /api/v2/57a7189f/server/group/fetch:
     get:
-      summary: ''
-      operationId: getApiV257a7189fServerGroupFetch
-      description: ''
+      summary: 获取所有服节点分组名称类别
+      operationId: ''
+      description: 提取配置出给系统节点标记的分组情况数组（比如按地区、按使用等级划分组别名集合）。
       parameters: []
       responses:
         403:
@@ -3891,29 +3964,59 @@ paths:
       security: []
   /api/v2/57a7189f/server/group/save:
     post:
-      summary: ''
-      operationId: postApiV257a7189fServerGroupSave
-      description: ''
+      summary: 建立保存配置新建分组
+      operationId: ''
+      description: 记录写下一个全新的服分组类别记录。
       parameters: []
       responses: {  }
       tags:
         - '管理后台 API (Admin)'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: 如果带传入则是修改旧有的分组名称而并非新建
+                  example: 8
+                name:
+                  type: string
+                  description: '被分配的识别名称（例: [VIP3] 东南亚原生服）'
+                  example: voluptatibus
+              required:
+                - name
       security: []
   /api/v2/57a7189f/server/group/drop:
     post:
-      summary: ''
-      operationId: postApiV257a7189fServerGroupDrop
-      description: ''
+      summary: 从系统移除删除废弃服务器分组
+      operationId: ''
+      description: 检查验证如果当前这个需要删除的组中还正在关联任意物理机节点、用户，则不允许操作。
       parameters: []
       responses: {  }
       tags:
         - '管理后台 API (Admin)'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: '需要物理抹除的机器类别分组记录 ID 号'
+                  example: 10
+              required:
+                - id
       security: []
   /api/v2/57a7189f/server/route/fetch:
     get:
-      summary: ''
-      operationId: getApiV257a7189fServerRouteFetch
-      description: ''
+      summary: 拉出目前现役的全部路由策略/过滤分流策略
+      operationId: ''
+      description: 此控制器专供于节点侧应用类似于V2ray/Xray的黑洞IP阻断策略与白名单DNS清洗列表管理查阅。
       parameters: []
       responses:
         403:
@@ -3933,8 +4036,8 @@ paths:
       security: []
   /api/v2/57a7189f/server/route/save:
     post:
-      summary: ''
-      operationId: postApiV257a7189fServerRouteSave
+      summary: 增加/更新定制拦截路由记录
+      operationId: ''
       description: ''
       parameters: []
       responses: {  }
@@ -3949,27 +4052,28 @@ paths:
               properties:
                 remarks:
                   type: string
-                  description: ''
-                  example: excepturi
+                  description: 备忘名称
+                  example: voluptatem
                 match:
-                  type: object
-                  description: ''
-                  example: []
-                  properties: {  }
+                  type: array
+                  description: '需要拦截或放行的数组如 geosite:cn 或者 IP集合'
+                  example:
+                    - quia
+                  items:
+                    type: string
                 action:
                   type: string
-                  description: ''
-                  example: dns
-                  enum:
-                    - block
-                    - direct
-                    - dns
-                    - proxy
+                  description: '处理模式 in:block(阻断),direct(直行),dns(转包验证解析),proxy(强制兜底代理)'
+                  example: consectetur
                 action_value:
                   type: string
                   description: ''
                   example: null
                   nullable: true
+                id:
+                  type: integer
+                  description: 带入意味着覆盖这条记录的内容
+                  example: 1
               required:
                 - remarks
                 - match
@@ -3977,19 +4081,32 @@ paths:
       security: []
   /api/v2/57a7189f/server/route/drop:
     post:
-      summary: ''
-      operationId: postApiV257a7189fServerRouteDrop
+      summary: 删除不再使用或废弃掉的分流屏蔽策略指令
+      operationId: ''
       description: ''
       parameters: []
       responses: {  }
       tags:
         - '管理后台 API (Admin)'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: 要拔除掉屏蔽策略表项的单条关联引索号
+                  example: 13
+              required:
+                - id
       security: []
   /api/v2/57a7189f/server/manage/getNodes:
     get:
-      summary: ''
-      operationId: getApiV257a7189fServerManageGetNodes
-      description: ''
+      summary: 获取节点服务器基本列表
+      operationId: ''
+      description: 查询获得系统中添加定义好的所有可用连接节点的信息聚合，带有组挂载信息和父级克隆源。
       parameters: []
       responses:
         403:
@@ -4009,9 +4126,9 @@ paths:
       security: []
   /api/v2/57a7189f/server/manage/sort:
     post:
-      summary: ''
-      operationId: postApiV257a7189fServerManageSort
-      description: ''
+      summary: 手动更新节点呈现排列次序
+      operationId: ''
+      description: 接受整个数组格式排序对象单据。
       parameters: []
       responses: {  }
       tags:
@@ -4019,8 +4136,8 @@ paths:
       security: []
   /api/v2/57a7189f/server/manage/update:
     post:
-      summary: ''
-      operationId: postApiV257a7189fServerManageUpdate
+      summary: 切换节点隐藏展现控制
+      operationId: ''
       description: ''
       parameters: []
       responses: {  }
@@ -4035,20 +4152,21 @@ paths:
               properties:
                 id:
                   type: integer
-                  description: ''
+                  description: 目标设置节点号
                   example: 10
                 show:
                   type: integer
-                  description: ''
-                  example: 18
+                  description: '控制标记0隐藏 1显示'
+                  example: 16
               required:
                 - id
+                - show
       security: []
   /api/v2/57a7189f/server/manage/save:
     post:
-      summary: ''
-      operationId: postApiV257a7189fServerManageSave
-      description: ''
+      summary: 保存/更新基础节点配置
+      operationId: ''
+      description: 主要定义该服务器的基础参数如连接信息、倍率、倍率组及所属父级分类。
       parameters: []
       responses: {  }
       tags:
@@ -4063,7 +4181,7 @@ paths:
                 type:
                   type: string
                   description: ''
-                  example: hysteria
+                  example: socks
                   enum:
                     - hysteria
                     - vless
@@ -4079,12 +4197,12 @@ paths:
                 spectific_key:
                   type: string
                   description: ''
-                  example: est
+                  example: culpa
                   nullable: true
                 code:
                   type: string
                   description: ''
-                  example: hic
+                  example: officia
                   nullable: true
                 show:
                   type: string
@@ -4092,8 +4210,8 @@ paths:
                   example: null
                 name:
                   type: string
-                  description: ''
-                  example: laudantium
+                  description: 用户前台查看的友好名称
+                  example: fugit
                 group_ids:
                   type: object
                   description: ''
@@ -4109,26 +4227,28 @@ paths:
                 parent_id:
                   type: integer
                   description: ''
-                  example: 8
+                  example: 4
                   nullable: true
                 host:
                   type: string
-                  description: ''
-                  example: tenetur
+                  description: IP或域名指向
+                  example: sapiente
                 port:
-                  type: string
-                  description: ''
-                  example: perspiciatis
+                  type: integer
+                  description: 连接端口
+                  example: 10
                 server_port:
-                  type: string
-                  description: ''
-                  example: temporibus
+                  type: integer
+                  description: 落地端口
+                  example: 12
                 tags:
-                  type: object
-                  description: ''
-                  example: null
-                  properties: {  }
-                  nullable: true
+                  type: array
+                  description: 自动呈现下方的节点标签
+                  example:
+                    - ea
+                  items:
+                    type: string
+                    nullable: true
                 excludes:
                   type: object
                   description: ''
@@ -4143,12 +4263,12 @@ paths:
                   nullable: true
                 rate:
                   type: number
-                  description: ''
-                  example: 1092302.0
+                  description: '扣量倍率 1.0 即一倍'
+                  example: 15755720.2324
                 rate_time_enable:
                   type: boolean
                   description: ''
-                  example: true
+                  example: false
                   nullable: true
                 rate_time_ranges:
                   type: array
@@ -4161,15 +4281,15 @@ paths:
                       start:
                         type: string
                         description: 'This field is required when <code>rate_time_ranges</code> is present. Must be a valid date in the format <code>H:i</code>.'
-                        example: '03:15'
+                        example: '03:27'
                       end:
                         type: string
                         description: 'This field is required when <code>rate_time_ranges</code> is present. Must be a valid date in the format <code>H:i</code>.'
-                        example: '03:15'
+                        example: '03:27'
                       rate:
                         type: number
                         description: 'This field is required when <code>rate_time_ranges</code> is present. validation.min.'
-                        example: 16
+                        example: 35
                 custom_outbounds:
                   type: object
                   description: ''
@@ -4196,8 +4316,12 @@ paths:
                 transfer_enable:
                   type: integer
                   description: validation.min.
-                  example: 37
+                  example: 40
                   nullable: true
+                id:
+                  type: integer
+                  description: 修改时携带目标主编号
+                  example: 18
               required:
                 - type
                 - name
@@ -4208,7 +4332,7 @@ paths:
       security: []
   /api/v2/57a7189f/server/manage/drop:
     post:
-      summary: 删除
+      summary: 销毁彻底删除指定节点
       operationId: ''
       description: ''
       parameters: []
@@ -4224,20 +4348,33 @@ paths:
               properties:
                 id:
                   type: integer
-                  description: ''
-                  example: 12
+                  description: '需要根绝清理的节点服的 ID'
+                  example: 18
               required:
                 - id
       security: []
   /api/v2/57a7189f/server/manage/copy:
     post:
-      summary: 复制节点
+      summary: 依据所选旧节点全盘克隆一份设定参数产生新节点
       operationId: ''
-      description: ''
+      description: '生成的克隆节点默认自动处于[隐藏不显示]以及流量空计状态，需要手动修改后发档。'
       parameters: []
       responses: {  }
       tags:
         - '管理后台 API (Admin)'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: '被抄作业的目标复刻源节点 ID'
+                  example: 15
+              required:
+                - id
       security: []
   /api/v2/57a7189f/server/manage/batchDelete:
     post:
@@ -4259,13 +4396,13 @@ paths:
                   type: array
                   description: ''
                   example:
-                    - 3
+                    - 1
                   items:
                     type: integer
       security: []
   /api/v2/57a7189f/server/manage/resetTraffic:
     post:
-      summary: 重置节点流量
+      summary: 重置独立节点的流量消耗计分缓存清零
       operationId: ''
       description: ''
       parameters: []
@@ -4281,8 +4418,8 @@ paths:
               properties:
                 id:
                   type: integer
-                  description: ''
-                  example: 13
+                  description: 清理的对象机器号
+                  example: 5
               required:
                 - id
       security: []
@@ -4306,16 +4443,46 @@ paths:
                   type: array
                   description: ''
                   example:
-                    - 6
+                    - 17
                   items:
                     type: integer
       security: []
   /api/v2/57a7189f/order/fetch:
     get:
-      summary: ''
-      operationId: getApiV257a7189fOrderFetch
-      description: ''
-      parameters: []
+      summary: 获取订单列表
+      operationId: ''
+      description: 查询所有由用户主动或系统开出的账单流水。可专门筛选出包含了渠道返利的明细。
+      parameters:
+        -
+          in: query
+          name: is_commission
+          description: 可选，如果为true则仅查询有佣金入账的邀请订单
+          example: false
+          required: false
+          schema:
+            type: boolean
+            description: 可选，如果为true则仅查询有佣金入账的邀请订单
+            example: false
+        -
+          in: query
+          name: current
+          description: 当前页码
+          example: 4
+          required: false
+          schema:
+            type: integer
+            description: 当前页码
+            example: 4
+        -
+          in: query
+          name: pageSize
+          description: 每页容量
+          example: 15
+          required: false
+          schema:
+            type: integer
+            description: 每页容量
+            example: 15
       responses:
         403:
           description: ''
@@ -4334,15 +4501,15 @@ paths:
       security: []
   /api/v2/57a7189f/order/update:
     post:
-      summary: ''
-      operationId: postApiV257a7189fOrderUpdate
-      description: ''
+      summary: 更新订单抽成状态等简要设置
+      operationId: ''
+      description: 例如可被用于更改此笔订单的最终返利到账标记等操作。
       parameters: []
       responses: {  }
       tags:
         - '管理后台 API (Admin)'
       requestBody:
-        required: false
+        required: true
         content:
           application/json:
             schema:
@@ -4351,26 +4518,28 @@ paths:
                 status:
                   type: string
                   description: ''
-                  example: 3
+                  example: 1
                   enum:
                     - 0
                     - 1
                     - 2
                     - 3
                 commission_status:
+                  type: integer
+                  description: 佣金下发审核是否成功已入账
+                  example: 2
+                trade_no:
                   type: string
-                  description: ''
-                  example: 0
-                  enum:
-                    - 0
-                    - 1
-                    - 3
+                  description: 必选更新的订单交易流水号
+                  example: consequatur
+              required:
+                - trade_no
       security: []
   /api/v2/57a7189f/order/assign:
     post:
-      summary: ''
-      operationId: postApiV257a7189fOrderAssign
-      description: ''
+      summary: 后台强制分发创建订单
+      operationId: ''
+      description: 管理员代替用户手工在后台挂上一笔未支付的新订阅账单。支持分配特定的购买套餐、时效等等。
       parameters: []
       responses: {  }
       tags:
@@ -4383,30 +4552,21 @@ paths:
               type: object
               properties:
                 plan_id:
-                  type: string
-                  description: ''
-                  example: voluptatum
+                  type: integer
+                  description: '强行开通并分配指向的商品套餐 ID'
+                  example: 15
                 email:
                   type: string
-                  description: ''
-                  example: maxime
+                  description: 针对分配购买的主人账号邮箱
+                  example: shayna90@example.com
                 total_amount:
-                  type: string
-                  description: ''
-                  example: ea
+                  type: integer
+                  description: 为该笔订单设置的需收款面值(分)
+                  example: 19
                 period:
                   type: string
-                  description: ''
-                  example: half_year_price
-                  enum:
-                    - month_price
-                    - quarter_price
-                    - half_year_price
-                    - year_price
-                    - two_year_price
-                    - three_year_price
-                    - onetime_price
-                    - reset_price
+                  description: '这次分配想让它续或买多久 (month/quarter 等)'
+                  example: dolorum
               required:
                 - plan_id
                 - email
@@ -4415,40 +4575,96 @@ paths:
       security: []
   /api/v2/57a7189f/order/paid:
     post:
-      summary: ''
-      operationId: postApiV257a7189fOrderPaid
-      description: ''
+      summary: 手动标记订单已支付
+      operationId: ''
+      description: '管理员在后台针对处于[挂起/未支付]状态的订单强制设定为支付成功状态（模拟收到现金操作）。'
       parameters: []
       responses: {  }
       tags:
         - '管理后台 API (Admin)'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                trade_no:
+                  type: string
+                  description: 订单系统交易号
+                  example: unde
+              required:
+                - trade_no
       security: []
   /api/v2/57a7189f/order/cancel:
     post:
-      summary: ''
-      operationId: postApiV257a7189fOrderCancel
-      description: ''
+      summary: 手动取消未支付订单
+      operationId: ''
+      description: 管理员在后台直接关闭放弃/驳回某个长时间未入账的僵尸订单记录。
       parameters: []
       responses: {  }
       tags:
         - '管理后台 API (Admin)'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                trade_no:
+                  type: string
+                  description: 要撤销掉的订单支付流水单号
+                  example: repellendus
+              required:
+                - trade_no
       security: []
   /api/v2/57a7189f/order/detail:
     post:
-      summary: ''
-      operationId: postApiV257a7189fOrderDetail
-      description: ''
-      parameters: []
+      summary: 获取订单详情
+      operationId: ''
+      description: 获取单一订单的所有相关连同上下文数据（如用户信息、购买的套餐快照、甚至如果分发了佣金包含的佣金账单记录）。
+      parameters:
+        -
+          in: query
+          name: id
+          description: '需要查询详细信息的记录 ID'
+          example: 20
+          required: true
+          schema:
+            type: integer
+            description: '需要查询详细信息的记录 ID'
+            example: 20
       responses: {  }
       tags:
         - '管理后台 API (Admin)'
       security: []
   /api/v2/57a7189f/user/fetch:
     get:
-      summary: ''
-      operationId: getApiV257a7189fUserFetch
-      description: ''
-      parameters: []
+      summary: 高级筛选分页搜索全站用户
+      operationId: ''
+      description: 返回经过关联脱敏后的用户主数据大列表并涵盖所持套餐、邮箱等各类简要状态标识。
+      parameters:
+        -
+          in: query
+          name: current
+          description: 可选，当前加载页
+          example: 20
+          required: false
+          schema:
+            type: integer
+            description: 可选，当前加载页
+            example: 20
+        -
+          in: query
+          name: pageSize
+          description: 每页要求多少名成员
+          example: 6
+          required: false
+          schema:
+            type: integer
+            description: 每页要求多少名成员
+            example: 6
       responses:
         403:
           description: ''
@@ -4467,9 +4683,9 @@ paths:
       security: []
   /api/v2/57a7189f/user/update:
     post:
-      summary: ''
-      operationId: postApiV257a7189fUserUpdate
-      description: ''
+      summary: 更新保存普通用户的各类参数
+      operationId: ''
+      description: 万能操作修改器方法（修改余额、套餐等级、封禁、重设改绑邮箱、加钱扣钱全量大集合修改器）。
       parameters: []
       responses: {  }
       tags:
@@ -4483,44 +4699,44 @@ paths:
               properties:
                 id:
                   type: integer
-                  description: ''
+                  description: 必然传需要改的目标户主
                   example: 19
                 email:
                   type: string
                   description: validation.email.
-                  example: xkiehn@example.org
+                  example: ratke.dannie@example.net
                 password:
                   type: string
                   description: validation.min.
-                  example: '*ru+K~oSGTOFGb/%=!Dy'
+                  example: ">_r1I'ow"
                   nullable: true
                 transfer_enable:
                   type: number
                   description: ''
-                  example: 435823.22281049
+                  example: 2472884.5020332
                 expired_at:
                   type: integer
                   description: ''
-                  example: 7
+                  example: 1
                   nullable: true
                 banned:
                   type: boolean
                   description: ''
-                  example: false
+                  example: true
                 plan_id:
                   type: integer
                   description: ''
-                  example: 6
+                  example: 11
                   nullable: true
                 commission_rate:
                   type: integer
                   description: 'validation.min validation.max.'
-                  example: 6
+                  example: 18
                   nullable: true
                 discount:
                   type: integer
                   description: 'validation.min validation.max.'
-                  example: 19
+                  example: 8
                   nullable: true
                 is_admin:
                   type: boolean
@@ -4537,19 +4753,19 @@ paths:
                 d:
                   type: integer
                   description: ''
-                  example: 19
+                  example: 9
                 balance:
                   type: number
                   description: ''
-                  example: 17142964.0
+                  example: 81172985.0
                 commission_type:
                   type: integer
                   description: ''
-                  example: 10
+                  example: 11
                 commission_balance:
                   type: number
                   description: ''
-                  example: 50.99
+                  example: 82324.28
                 remarks:
                   type: string
                   description: ''
@@ -4558,22 +4774,32 @@ paths:
                 speed_limit:
                   type: integer
                   description: ''
-                  example: 5
+                  example: 8
                   nullable: true
                 device_limit:
                   type: integer
                   description: ''
-                  example: 11
+                  example: 14
                   nullable: true
               required:
                 - id
       security: []
   /api/v2/57a7189f/user/getUserInfoById:
     get:
-      summary: ''
-      operationId: getApiV257a7189fUserGetUserInfoById
-      description: ''
-      parameters: []
+      summary: 获取特定用户详细档口
+      operationId: ''
+      description: '从单独用户记录 ID 查验获取他的具体全面信息。'
+      parameters:
+        -
+          in: query
+          name: id
+          description: '被查询者的 User_ID 面板标'
+          example: 19
+          required: true
+          schema:
+            type: integer
+            description: '被查询者的 User_ID 面板标'
+            example: 19
       responses:
         403:
           description: ''
@@ -4599,15 +4825,15 @@ paths:
                 id:
                   type: number
                   description: ''
-                  example: 48985701.944422
+                  example: 2.8666396
               required:
                 - id
       security: []
   /api/v2/57a7189f/user/generate:
     post:
-      summary: ''
-      operationId: postApiV257a7189fUserGenerate
-      description: ''
+      summary: 矩阵式新户批量生成
+      operationId: ''
+      description: 管理员可以一次性凭借前缀和随机密码，建立成百上千包含时效/套餐绑定的新账号资源用于下发活动卡。
       parameters: []
       responses: {  }
       tags:
@@ -4622,17 +4848,17 @@ paths:
                 generate_count:
                   type: integer
                   description: validation.max.
-                  example: 1
+                  example: 3
                   nullable: true
                 expired_at:
                   type: integer
                   description: ''
-                  example: 15
+                  example: 4
                   nullable: true
                 plan_id:
                   type: integer
                   description: ''
-                  example: 16
+                  example: 18
                   nullable: true
                 email_prefix:
                   type: string
@@ -4642,7 +4868,7 @@ paths:
                 email_suffix:
                   type: string
                   description: ''
-                  example: est
+                  example: animi
                 password:
                   type: string
                   description: ''
@@ -4653,19 +4879,39 @@ paths:
       security: []
   /api/v2/57a7189f/user/dumpCSV:
     post:
-      summary: ''
-      operationId: postApiV257a7189fUserDumpCSV
-      description: ''
+      summary: '大规模导出筛选的用户明细 CSV'
+      operationId: CSV
+      description: 把目前筛选出的或者批量选定的用户群体做一次性的资产订阅详情信息文本提取。
       parameters: []
       responses: {  }
       tags:
         - '管理后台 API (Admin)'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                scope:
+                  type: string
+                  description: "指明目标范围是'selected'手动勾选的 / 'filtered'筛选结果的 还是全部的"
+                  example: eaque
+                user_ids:
+                  type: array
+                  description: '对选定的生效传入的 ID list'
+                  example:
+                    - officiis
+                  items:
+                    type: string
+              required:
+                - scope
       security: []
   /api/v2/57a7189f/user/sendMail:
     post:
-      summary: ''
-      operationId: postApiV257a7189fUserSendMail
-      description: ''
+      summary: 向范围选定用户发送系统批次邮件广播
+      operationId: ''
+      description: 通过后台调度群发特定的业务推广或者割草提醒。
       parameters: []
       responses: {  }
       tags:
@@ -4679,41 +4925,48 @@ paths:
               properties:
                 subject:
                   type: string
-                  description: ''
-                  example: et
+                  description: 信件主旨
+                  example: eaque
                 content:
                   type: string
-                  description: ''
-                  example: iste
+                  description: 信件富文本代码
+                  example: aliquid
+                scope:
+                  type: string
+                  description: 选择框定人员的群体判定逻辑
+                  example: qui
               required:
                 - subject
                 - content
       security: []
   /api/v2/57a7189f/user/ban:
     post:
-      summary: ''
-      operationId: postApiV257a7189fUserBan
-      description: ''
+      summary: 批量封禁违规用户群
+      operationId: ''
+      description: 让框选的一批账号瞬间进入封停状态不可用。
       parameters: []
       responses: {  }
       tags:
         - '管理后台 API (Admin)'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                scope:
+                  type: string
+                  description: 封禁影响圈子的逻辑说明
+                  example: atque
+              required:
+                - scope
       security: []
   /api/v2/57a7189f/user/resetSecret:
     post:
-      summary: ''
-      operationId: postApiV257a7189fUserResetSecret
-      description: ''
-      parameters: []
-      responses: {  }
-      tags:
-        - '管理后台 API (Admin)'
-      security: []
-  /api/v2/57a7189f/user/destroy:
-    post:
-      summary: ''
-      operationId: postApiV257a7189fUserDestroy
-      description: ''
+      summary: 重置用户的安全令牌凭据
+      operationId: ''
+      description: '强制清洗用户的 UUID 和 Token 订阅流地址等防泄漏操作，一般用于用户自诉外泄时的风控强制阻断。'
       parameters: []
       responses: {  }
       tags:
@@ -4726,17 +4979,40 @@ paths:
               type: object
               properties:
                 id:
-                  type: string
-                  description: 'The <code>id</code> of an existing record in the App\Models\User table.'
-                  example: dolore
+                  type: integer
+                  description: '需要操作洗白的用户记录 ID'
+                  example: 14
+              required:
+                - id
+      security: []
+  /api/v2/57a7189f/user/destroy:
+    post:
+      summary: 斩草除根：深层销毁用户全部痕迹
+      operationId: ''
+      description: 彻底从持久层抹去目标角色相关的所有表单、信件、工单、连接和账户实体关联资源。
+      parameters: []
+      responses: {  }
+      tags:
+        - '管理后台 API (Admin)'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: '需要永久销毁的数据主 ID'
+                  example: 10
               required:
                 - id
       security: []
   /api/v2/57a7189f/stat/getOverride:
     get:
-      summary: ''
-      operationId: getApiV257a7189fStatGetOverride
-      description: ''
+      summary: 获取后台总览统计大盘
+      operationId: ''
+      description: 汇集整个Xboard当前各类的基础在线健康度及营收数字统计汇总大盘报表。
       parameters: []
       responses:
         403:
@@ -4756,9 +5032,9 @@ paths:
       security: []
   /api/v2/57a7189f/stat/getStats:
     get:
-      summary: 'Get comprehensive statistics data including income, users, and growth rates'
-      operationId: getComprehensiveStatisticsDataIncludingIncomeUsersAndGrowthRates
-      description: ''
+      summary: 获取带有相对增长率的新款超级统计大盘
+      operationId: ''
+      description: 这是更新版的前端Dashboard首屏大屏看板，附带有各项关键运营指标（日增环比增长百分率等），非常详尽。
       parameters: []
       responses:
         403:
@@ -4778,8 +5054,8 @@ paths:
       security: []
   /api/v2/57a7189f/stat/getServerLastRank:
     get:
-      summary: ''
-      operationId: getApiV257a7189fStatGetServerLastRank
+      summary: 获取当日各节点实时跑量排名
+      operationId: ''
       description: ''
       parameters: []
       responses:
@@ -4800,8 +5076,8 @@ paths:
       security: []
   /api/v2/57a7189f/stat/getServerYesterdayRank:
     get:
-      summary: ''
-      operationId: getApiV257a7189fStatGetServerYesterdayRank
+      summary: 获取昨日各节点流量排行榜单
+      operationId: ''
       description: ''
       parameters: []
       responses:
@@ -4822,10 +5098,40 @@ paths:
       security: []
   /api/v2/57a7189f/stat/getOrder:
     get:
-      summary: 'Get order statistics with filtering and pagination'
-      operationId: getOrderStatisticsWithFilteringAndPagination
-      description: ''
-      parameters: []
+      summary: 获取财务收入流水及佣金对账表
+      operationId: ''
+      description: 提供管理控制台有关近期内平台盈利、出款流水的汇总统计对账与每日分图数据。
+      parameters:
+        -
+          in: query
+          name: start_date
+          description: 可选检索统计日历起点
+          example: '2024-01-01'
+          required: false
+          schema:
+            type: string
+            description: 可选检索统计日历起点
+            example: '2024-01-01'
+        -
+          in: query
+          name: end_date
+          description: 可选检索统计日历终点
+          example: '2024-01-31'
+          required: false
+          schema:
+            type: string
+            description: 可选检索统计日历终点
+            example: '2024-01-31'
+        -
+          in: query
+          name: type
+          description: 抽取单一指定的指标列名称
+          example: totam
+          required: false
+          schema:
+            type: string
+            description: 抽取单一指定的指标列名称
+            example: totam
       responses:
         403:
           description: ''
@@ -4871,10 +5177,30 @@ paths:
       security: []
   /api/v2/57a7189f/stat/getStatUser:
     get:
-      summary: ''
-      operationId: getApiV257a7189fStatGetStatUser
+      summary: 提取特定用户的详细流量上报日志
+      operationId: ''
       description: ''
-      parameters: []
+      parameters:
+        -
+          in: query
+          name: user_id
+          description: '所指明查证监控的用户 ID'
+          example: 16
+          required: true
+          schema:
+            type: integer
+            description: '所指明查证监控的用户 ID'
+            example: 16
+        -
+          in: query
+          name: pageSize
+          description: 每页翻页长度
+          example: 10
+          required: false
+          schema:
+            type: integer
+            description: 每页翻页长度
+            example: 10
       responses:
         403:
           description: ''
@@ -4900,14 +5226,14 @@ paths:
                 user_id:
                   type: integer
                   description: ''
-                  example: 14
+                  example: 13
               required:
                 - user_id
       security: []
   /api/v2/57a7189f/stat/getStatRecord:
     get:
-      summary: ''
-      operationId: getApiV257a7189fStatGetStatRecord
+      summary: 取通用历史归档统计单线图表趋势集
+      operationId: ''
       description: ''
       parameters: []
       responses:
@@ -4928,10 +5254,40 @@ paths:
       security: []
   /api/v2/57a7189f/stat/getTrafficRank:
     get:
-      summary: 'Get traffic ranking data for nodes or users'
-      operationId: getTrafficRankingDataForNodesOrUsers
-      description: ''
-      parameters: []
+      summary: 获取最新流量飙车/消耗冠军榜排名
+      operationId: ''
+      description: 支持查询任意时间段内全平台【消耗流量最大的黑洞老鼠用户列表】或者【承担数据穿透最大的重载服务器列表】及环比同期浮动。
+      parameters:
+        -
+          in: query
+          name: type
+          description: '指定输出排行对象的类型，取值 node 或 user'
+          example: doloremque
+          required: true
+          schema:
+            type: string
+            description: '指定输出排行对象的类型，取值 node 或 user'
+            example: doloremque
+        -
+          in: query
+          name: start_time
+          description: '开始计算统计的 UTC 时间戳'
+          example: 19
+          required: false
+          schema:
+            type: integer
+            description: '开始计算统计的 UTC 时间戳'
+            example: 19
+        -
+          in: query
+          name: end_time
+          description: '统计界限终止 UTC 时间戳'
+          example: 10
+          required: false
+          schema:
+            type: integer
+            description: '统计界限终止 UTC 时间戳'
+            example: 10
       responses:
         403:
           description: ''
@@ -4964,21 +5320,21 @@ paths:
                 start_time:
                   type: integer
                   description: 'validation.min validation.max.'
-                  example: 3
+                  example: 5
                   nullable: true
                 end_time:
                   type: integer
                   description: 'validation.min validation.max.'
-                  example: 14
+                  example: 23
                   nullable: true
               required:
                 - type
       security: []
   /api/v2/57a7189f/notice/fetch:
     get:
-      summary: ''
-      operationId: getApiV257a7189fNoticeFetch
-      description: ''
+      summary: 获取公告列表
+      operationId: ''
+      description: 获取系统内部创建的系统平台公告通知，支持排序返回。
       parameters: []
       responses:
         403:
@@ -4998,9 +5354,9 @@ paths:
       security: []
   /api/v2/57a7189f/notice/save:
     post:
-      summary: ''
-      operationId: postApiV257a7189fNoticeSave
-      description: ''
+      summary: 创建/保存编辑公告
+      operationId: ''
+      description: '新增站点的活动或业务通知文章。如果有 id 则是修改。'
       parameters: []
       responses: {  }
       tags:
@@ -5014,16 +5370,16 @@ paths:
               properties:
                 title:
                   type: string
-                  description: ''
-                  example: vel
+                  description: 公告标题
+                  example: exercitationem
                 content:
                   type: string
-                  description: ''
-                  example: harum
+                  description: 公告主体代码
+                  example: explicabo
                 img_url:
                   type: string
                   description: 'Must be a valid URL.'
-                  example: 'http://breitenberg.info/rerum-ut-laborum-tenetur-magni-et-deserunt'
+                  example: 'http://www.rosenbaum.org/nisi-dolorem-ea-eum'
                   nullable: true
                 tags:
                   type: object
@@ -5031,34 +5387,26 @@ paths:
                   example: null
                   properties: {  }
                   nullable: true
+                id:
+                  type: integer
+                  description: '如果是编辑则传这篇公告的 ID'
+                  example: 6
+                show:
+                  type: boolean
+                  description: 是否显示
+                  example: false
+                popup:
+                  type: boolean
+                  description: 是否需要在用户加载后台时强行弹窗展示
+                  example: true
               required:
                 - title
                 - content
       security: []
   /api/v2/57a7189f/notice/drop:
     post:
-      summary: ''
-      operationId: postApiV257a7189fNoticeDrop
-      description: ''
-      parameters: []
-      responses: {  }
-      tags:
-        - '管理后台 API (Admin)'
-      security: []
-  /api/v2/57a7189f/notice/show:
-    post:
-      summary: ''
-      operationId: postApiV257a7189fNoticeShow
-      description: ''
-      parameters: []
-      responses: {  }
-      tags:
-        - '管理后台 API (Admin)'
-      security: []
-  /api/v2/57a7189f/notice/sort:
-    post:
-      summary: ''
-      operationId: postApiV257a7189fNoticeSort
+      summary: 彻底抹除公告
+      operationId: ''
       description: ''
       parameters: []
       responses: {  }
@@ -5071,19 +5419,69 @@ paths:
             schema:
               type: object
               properties:
+                id:
+                  type: integer
+                  description: '待删除公告的 ID'
+                  example: 17
+              required:
+                - id
+      security: []
+  /api/v2/57a7189f/notice/show:
+    post:
+      summary: 切换单个公告显示状态
+      operationId: ''
+      description: 强制翻转某个公告的打开/隐藏表现。
+      parameters: []
+      responses: {  }
+      tags:
+        - '管理后台 API (Admin)'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: '要切换公告的 ID'
+                  example: 1
+              required:
+                - id
+      security: []
+  /api/v2/57a7189f/notice/sort:
+    post:
+      summary: 公告重排序
+      operationId: ''
+      description: 拖拽后保存全体公告通知的新排位。
+      parameters: []
+      responses: {  }
+      tags:
+        - '管理后台 API (Admin)'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
                 ids:
-                  type: object
-                  description: ''
-                  example: []
-                  properties: {  }
+                  type: array
+                  description: 公告ID列表的顺序
+                  example:
+                    - 2
+                    - 1
+                    - 3
+                  items:
+                    type: string
               required:
                 - ids
       security: []
   /api/v2/57a7189f/ticket/fetch:
     get:
-      summary: ''
-      operationId: getApiV257a7189fTicketFetch
-      description: ''
+      summary: 获取工单列表详情
+      operationId: ''
+      description: "管理后台分页提取所有用户的客服工单（支持按状态分类显示未完成和已完成工单等不同情况）。\n若带 id，则会转为特定工单详情的呈现。"
       parameters: []
       responses:
         403:
@@ -5103,9 +5501,9 @@ paths:
       security: []
   /api/v2/57a7189f/ticket/reply:
     post:
-      summary: ''
-      operationId: postApiV257a7189fTicketReply
-      description: ''
+      summary: 回复工单消息
+      operationId: ''
+      description: 客服管理人员进行工单流的文字回复推送。
       parameters: []
       responses: {  }
       tags:
@@ -5118,22 +5516,22 @@ paths:
               type: object
               properties:
                 id:
-                  type: number
-                  description: ''
-                  example: 5307704.3549606
+                  type: integer
+                  description: 需要追加回复文本的目标工单ID
+                  example: 12
                 message:
                   type: string
-                  description: ''
-                  example: cupiditate
+                  description: 具体的客服回复段落正文文本
+                  example: laborum
               required:
                 - id
                 - message
       security: []
   /api/v2/57a7189f/ticket/close:
     post:
-      summary: ''
-      operationId: postApiV257a7189fTicketClose
-      description: ''
+      summary: 强制关闭截断工单
+      operationId: ''
+      description: 针对已处理完毕或者无需回复的情况将该工单状态扭转至“已关闭”。
       parameters: []
       responses: {  }
       tags:
@@ -5146,18 +5544,52 @@ paths:
               type: object
               properties:
                 id:
-                  type: number
-                  description: ''
-                  example: 162424237.97265
+                  type: integer
+                  description: '需要被彻底关闭不再接受续加信息的工单 ID'
+                  example: 16
               required:
                 - id
       security: []
   /api/v2/57a7189f/coupon/fetch:
     get:
-      summary: ''
-      operationId: getApiV257a7189fCouponFetch
-      description: ''
-      parameters: []
+      summary: 获取优惠券列表
+      operationId: ''
+      description: 支持多条件过滤检索和自定义排序。
+      parameters:
+        -
+          in: query
+          name: current
+          description: 当前翻页页码
+          example: 1
+          required: false
+          schema:
+            type: integer
+            description: 当前翻页页码
+            example: 1
+        -
+          in: query
+          name: pageSize
+          description: 每页条数
+          example: 10
+          required: false
+          schema:
+            type: integer
+            description: 每页条数
+            example: 10
+        -
+          in: query
+          name: filter
+          description: 高级过滤项数组
+          example:
+            - dolores
+          required: false
+          schema:
+            type: array
+            description: 高级过滤项数组
+            example:
+              - dolores
+            items:
+              type: string
       responses:
         403:
           description: ''
@@ -5176,9 +5608,9 @@ paths:
       security: []
   /api/v2/57a7189f/coupon/generate:
     post:
-      summary: ''
-      operationId: postApiV257a7189fCouponGenerate
-      description: ''
+      summary: 生成/编辑优惠券
+      operationId: ''
+      description: "批量或单张生成特定的面额、比例以及设定特定套餐可用的优惠券。也可用于编辑旧活动优惠券。\n若包含 `generate_count` 参数，则是执行大批量印钞生成操作。"
       parameters: []
       responses: {  }
       tags:
@@ -5192,41 +5624,41 @@ paths:
               properties:
                 generate_count:
                   type: integer
-                  description: validation.max.
-                  example: 24
+                  description: '选填，批量生成数量 (若有此项则走批量生成逻辑并返回csv文本下载)'
+                  example: 20
                   nullable: true
                 name:
                   type: string
                   description: ''
-                  example: debitis
+                  example: consequatur
                 type:
                   type: string
                   description: ''
-                  example: 1
+                  example: 2
                   enum:
                     - 1
                     - 2
                 value:
                   type: integer
-                  description: ''
-                  example: 13
+                  description: '优惠面额或者比例（若是比例则 10 代表 10%）'
+                  example: 16
                 started_at:
                   type: integer
                   description: ''
-                  example: 2
+                  example: 12
                 ended_at:
                   type: integer
                   description: ''
-                  example: 20
+                  example: 6
                 limit_use:
                   type: integer
                   description: ''
-                  example: 3
+                  example: 10
                   nullable: true
                 limit_use_with_user:
                   type: integer
                   description: ''
-                  example: 8
+                  example: 10
                   nullable: true
                 limit_plan_ids:
                   type: object
@@ -5242,8 +5674,8 @@ paths:
                   nullable: true
                 code:
                   type: string
-                  description: ''
-                  example: null
+                  description: 选填，兑换码（如为空则由系统随机生成8位字符）
+                  example: dolorum
               required:
                 - name
                 - type
@@ -5253,9 +5685,9 @@ paths:
       security: []
   /api/v2/57a7189f/coupon/drop:
     post:
-      summary: ''
-      operationId: postApiV257a7189fCouponDrop
-      description: ''
+      summary: 彻底删除优惠券
+      operationId: ''
+      description: 将优惠券实体从数据库中连根拔起地抹除记录。
       parameters: []
       responses: {  }
       tags:
@@ -5268,17 +5700,17 @@ paths:
               type: object
               properties:
                 id:
-                  type: number
-                  description: ''
-                  example: 2831.389265042
+                  type: integer
+                  description: 需要销毁的优惠券ID
+                  example: 9
               required:
                 - id
       security: []
   /api/v2/57a7189f/coupon/show:
     post:
-      summary: ''
-      operationId: postApiV257a7189fCouponShow
-      description: ''
+      summary: 切换优惠券激活状态
+      operationId: ''
+      description: '直接对某一张优惠券的可见/可用状态 (`show`) 进行反转（开变关，关变开）。'
       parameters: []
       responses: {  }
       tags:
@@ -5291,17 +5723,17 @@ paths:
               type: object
               properties:
                 id:
-                  type: number
-                  description: ''
-                  example: 8.5506
+                  type: integer
+                  description: '优惠券 ID'
+                  example: 3
               required:
                 - id
       security: []
   /api/v2/57a7189f/coupon/update:
     post:
-      summary: ''
-      operationId: postApiV257a7189fCouponUpdate
-      description: ''
+      summary: 更新优惠券信息
+      operationId: ''
+      description: 主要用于单独更改某优惠券是否显示/可用状态。
       parameters: []
       responses: {  }
       tags:
@@ -5314,12 +5746,12 @@ paths:
               type: object
               properties:
                 id:
-                  type: number
-                  description: ''
-                  example: 674033702.21283
+                  type: integer
+                  description: '需要更新的优惠券 ID'
+                  example: 11
                 show:
                   type: boolean
-                  description: ''
+                  description: 是否在前台可见
                   example: true
                   nullable: true
               required:
@@ -5329,8 +5761,28 @@ paths:
     get:
       summary: 获取礼品卡模板列表
       operationId: ''
-      description: ''
-      parameters: []
+      description: 罗列系统中所有的礼品卡原型模板，自带统计此模板已印刷及已消耗的兑换码数量。
+      parameters:
+        -
+          in: query
+          name: type
+          description: 过滤模板分类
+          example: 20
+          required: false
+          schema:
+            type: integer
+            description: 过滤模板分类
+            example: 20
+        -
+          in: query
+          name: page
+          description: 当前页码
+          example: 18
+          required: false
+          schema:
+            type: integer
+            description: 当前页码
+            example: 18
       responses:
         403:
           description: ''
@@ -5356,7 +5808,7 @@ paths:
                 type:
                   type: integer
                   description: 'validation.min validation.max.'
-                  example: 3
+                  example: 6
                 status:
                   type: integer
                   description: ''
@@ -5367,17 +5819,17 @@ paths:
                 page:
                   type: integer
                   description: validation.min.
-                  example: 19
+                  example: 5
                 per_page:
                   type: integer
                   description: 'validation.min validation.max.'
-                  example: 14
+                  example: 13
       security: []
   /api/v2/57a7189f/gift-card/create-template:
     post:
       summary: 创建礼品卡模板
       operationId: ''
-      description: ''
+      description: 建立一张全新的礼品卡派发模板，设定基本属性、包含的面额或赠品种类。
       parameters: []
       responses: {  }
       tags:
@@ -5392,16 +5844,16 @@ paths:
                 name:
                   type: string
                   description: validation.max.
-                  example: ugpouwczevcrhi
+                  example: xmnknkgsqmtytkqtieldhqq
                 description:
                   type: string
                   description: ''
-                  example: 'Voluptatem non quaerat eos cum vel.'
+                  example: 'Reprehenderit vel enim ullam non illo.'
                   nullable: true
                 type:
                   type: integer
                   description: ''
-                  example: 11
+                  example: 10
                 status:
                   type: boolean
                   description: ''
@@ -5432,22 +5884,22 @@ paths:
                 icon:
                   type: string
                   description: validation.max.
-                  example: i
+                  example: awwuodpumwxfkkmmiiocp
                   nullable: true
                 background_image:
                   type: string
                   description: 'Must be a valid URL. validation.max.'
-                  example: zzijrnziygfofnmdkjet
+                  example: azuipbpvbysgdcnvkavbjsac
                   nullable: true
                 theme_color:
                   type: string
                   description: 'Must match the regex /^#[0-9A-Fa-f]{6}$/.'
-                  example: '#AAE2f1'
+                  example: '#5A4Faa'
                   nullable: true
                 sort:
                   type: integer
                   description: validation.min.
-                  example: 35
+                  example: 16
               required:
                 - name
                 - type
@@ -5457,7 +5909,7 @@ paths:
     post:
       summary: 更新礼品卡模板
       operationId: ''
-      description: ''
+      description: 更改或调整该原型卡包含的面额价值、限额限制等一切核心属性。不影响在这之前已印发的老卡但影响其后置消耗鉴定。
       parameters: []
       responses: {  }
       tags:
@@ -5472,20 +5924,20 @@ paths:
                 id:
                   type: integer
                   description: 'The <code>id</code> of an existing record in the v2_gift_card_template table.'
-                  example: 15
+                  example: 6
                 name:
                   type: string
                   description: validation.max.
-                  example: ygwkqzvhpqddapsrnwv
+                  example: ddwyznftmfqpekg
                 description:
                   type: string
                   description: ''
-                  example: 'Accusantium ea optio vel inventore.'
+                  example: 'Ut quibusdam quibusdam officia.'
                   nullable: true
                 type:
                   type: integer
                   description: ''
-                  example: 20
+                  example: 9
                 status:
                   type: boolean
                   description: ''
@@ -5516,22 +5968,22 @@ paths:
                 icon:
                   type: string
                   description: validation.max.
-                  example: nogu
+                  example: crjxhybjeuedehtpqqxmw
                   nullable: true
                 background_image:
                   type: string
                   description: 'Must be a valid URL. validation.max.'
-                  example: flxyrbmrcb
+                  example: fyvnirxuyfl
                   nullable: true
                 theme_color:
                   type: string
                   description: 'Must match the regex /^#[0-9A-Fa-f]{6}$/.'
-                  example: '#F641B4'
+                  example: '#5238C0'
                   nullable: true
                 sort:
                   type: integer
                   description: validation.min.
-                  example: 9
+                  example: 33
               required:
                 - id
       security: []
@@ -5539,7 +5991,7 @@ paths:
     post:
       summary: 删除礼品卡模板
       operationId: ''
-      description: ''
+      description: 如果该原型模板已经挂载了任何印刷批次的发放真卡记录，则无法直接删除模板。
       parameters: []
       responses: {  }
       tags:
@@ -5553,16 +6005,16 @@ paths:
               properties:
                 id:
                   type: integer
-                  description: 'The <code>id</code> of an existing record in the v2_gift_card_template table.'
-                  example: 11
+                  description: '需要被删除原型模板 ID'
+                  example: 6
               required:
                 - id
       security: []
   /api/v2/57a7189f/gift-card/generate-codes:
     post:
-      summary: 生成兑换码
+      summary: 生成并印发兑换码
       operationId: ''
-      description: ''
+      description: '基于选定的模板来执行印钱发码工序（最高单批发 10000 码）。并且可选择立即提取 CSV 文件流返回。'
       parameters: []
       responses: {  }
       tags:
@@ -5576,35 +6028,39 @@ paths:
               properties:
                 template_id:
                   type: integer
-                  description: 'The <code>id</code> of an existing record in the v2_gift_card_template table.'
+                  description: 制版/模板ID
                   example: 6
                 count:
                   type: integer
-                  description: 'validation.min validation.max.'
+                  description: 生成码总量数目
                   example: 16
                 prefix:
                   type: string
-                  description: 'Must match the regex /^[A-Z0-9]*$/. validation.max.'
-                  example: ic
+                  description: 码前缀（支持A-Z及数字）
+                  example: esse
                   nullable: true
                 expires_hours:
                   type: integer
                   description: validation.min.
-                  example: 74
+                  example: 78
                   nullable: true
                 max_usage:
                   type: integer
                   description: 'validation.min validation.max.'
-                  example: 10
+                  example: 5
+                download_csv:
+                  type: boolean
+                  description: '传递 1 则返回包含这些码的CSV直下流文件'
+                  example: false
               required:
                 - template_id
                 - count
       security: []
   /api/v2/57a7189f/gift-card/codes:
     get:
-      summary: 获取兑换码列表
+      summary: 获取发放兑换码列表
       operationId: ''
-      description: ''
+      description: 高级表格组件，分页获取查询所有的实体真卡卡密情况、是否被兑换、领奖时间等。
       parameters: []
       responses:
         403:
@@ -5631,11 +6087,11 @@ paths:
                 template_id:
                   type: integer
                   description: 'The <code>id</code> of an existing record in the v2_gift_card_template table.'
-                  example: 20
+                  example: 13
                 batch_id:
                   type: string
                   description: ''
-                  example: qui
+                  example: quam
                 status:
                   type: integer
                   description: ''
@@ -5648,11 +6104,11 @@ paths:
                 page:
                   type: integer
                   description: validation.min.
-                  example: 67
+                  example: 54
                 per_page:
                   type: integer
                   description: 'validation.min validation.max.'
-                  example: 15
+                  example: 6
       security: []
   /api/v2/57a7189f/gift-card/toggle-code:
     post:
@@ -5672,24 +6128,21 @@ paths:
               properties:
                 id:
                   type: integer
-                  description: 'The <code>id</code> of an existing record in the v2_gift_card_code table.'
-                  example: 5
+                  description: '实体子卡 ID'
+                  example: 12
                 action:
                   type: string
-                  description: ''
-                  example: enable
-                  enum:
-                    - disable
-                    - enable
+                  description: '"disable" 或 "enable" 开关联动动作'
+                  example: libero
               required:
                 - id
                 - action
       security: []
   /api/v2/57a7189f/gift-card/export-codes:
     get:
-      summary: 导出兑换码
+      summary: 导出兑换码(直接拉文件)
       operationId: ''
-      description: ''
+      description: 再次向系统讨要之前的某个印发批次的纯净版纯文本包含每行一码文件的导出下载。
       parameters: []
       responses:
         403:
@@ -5715,8 +6168,8 @@ paths:
               properties:
                 batch_id:
                   type: string
-                  description: 'The <code>batch_id</code> of an existing record in the v2_gift_card_code table.'
-                  example: consectetur
+                  description: '相关批次号 Batch ID'
+                  example: et
               required:
                 - batch_id
       security: []
@@ -5739,7 +6192,7 @@ paths:
                 id:
                   type: integer
                   description: 'The <code>id</code> of an existing record in the v2_gift_card_code table.'
-                  example: 15
+                  example: 17
                 expires_at:
                   type: integer
                   description: ''
@@ -5748,7 +6201,7 @@ paths:
                 max_usage:
                   type: integer
                   description: 'validation.min validation.max.'
-                  example: 10
+                  example: 15
                 status:
                   type: integer
                   description: ''
@@ -5780,15 +6233,15 @@ paths:
                 id:
                   type: integer
                   description: 'The <code>id</code> of an existing record in the v2_gift_card_code table.'
-                  example: 19
+                  example: 6
               required:
                 - id
       security: []
   /api/v2/57a7189f/gift-card/usages:
     get:
-      summary: 获取使用记录
+      summary: 获取用户使用核销记录
       operationId: ''
-      description: ''
+      description: 透视追踪查阅用户在前端具体激活了哪张卡、得到了什么返金/时长等综合对账报表。
       parameters: []
       responses:
         403:
@@ -5815,25 +6268,25 @@ paths:
                 template_id:
                   type: integer
                   description: 'The <code>id</code> of an existing record in the v2_gift_card_template table.'
-                  example: 8
+                  example: 19
                 user_id:
                   type: integer
                   description: 'The <code>id</code> of an existing record in the v2_user table.'
-                  example: 14
+                  example: 13
                 page:
                   type: integer
                   description: validation.min.
-                  example: 15
+                  example: 25
                 per_page:
                   type: integer
                   description: 'validation.min validation.max.'
-                  example: 15
+                  example: 1
       security: []
   /api/v2/57a7189f/gift-card/statistics:
     get:
-      summary: 获取统计数据
+      summary: 获取礼品系统使用统计大盘数据
       operationId: ''
-      description: ''
+      description: 面向控制台首页或统计报表界面输出各种汇总总量、时间分片折线使用率图表及占比情况。
       parameters: []
       responses:
         403:
@@ -5890,10 +6343,20 @@ paths:
       security: []
   /api/v2/57a7189f/knowledge/fetch:
     get:
-      summary: ''
-      operationId: getApiV257a7189fKnowledgeFetch
-      description: ''
-      parameters: []
+      summary: 获取知识库文章列表/单页
+      operationId: ''
+      description: '如果带了 ID 参数则返回具体的那篇文章详情，否则返回所有文章的清单标题和简要信息。'
+      parameters:
+        -
+          in: query
+          name: id
+          description: '过滤查询指定的文章 ID (如果传了只返回这个id详情)'
+          example: 2
+          required: false
+          schema:
+            type: integer
+            description: '过滤查询指定的文章 ID (如果传了只返回这个id详情)'
+            example: 2
       responses:
         403:
           description: ''
@@ -5912,9 +6375,9 @@ paths:
       security: []
   /api/v2/57a7189f/knowledge/getCategory:
     get:
-      summary: ''
-      operationId: getApiV257a7189fKnowledgeGetCategory
-      description: ''
+      summary: 获取已有知识库分类
+      operationId: ''
+      description: 获取系统中已经被创建出的所有帮助文档类别（Category），辅助前端提供下拉选择。
       parameters: []
       responses:
         403:
@@ -5934,9 +6397,9 @@ paths:
       security: []
   /api/v2/57a7189f/knowledge/save:
     post:
-      summary: ''
-      operationId: postApiV257a7189fKnowledgeSave
-      description: ''
+      summary: 保存/创建知识库文章
+      operationId: ''
+      description: '由管理员新建或者编辑知识库文章主体内容。如果传入了 id 就是更新旧的，否则为新创建。'
       parameters: []
       responses: {  }
       tags:
@@ -5950,36 +6413,45 @@ paths:
               properties:
                 category:
                   type: string
-                  description: ''
-                  example: ea
+                  description: 分类名称
+                  example: odio
                 language:
                   type: string
                   description: ''
-                  example: ut
+                  example: voluptate
                 title:
                   type: string
-                  description: ''
-                  example: nulla
+                  description: 文章标题
+                  example: illum
                 body:
                   type: string
                   description: ''
-                  example: tenetur
+                  example: magni
                 show:
                   type: boolean
                   description: ''
-                  example: true
+                  example: false
                   nullable: true
+                id:
+                  type: integer
+                  description: 如果是修改现有文章则必须传这篇的ID
+                  example: 11
+                content:
+                  type: string
+                  description: 文章主体（通常为Markdown或者富文本）
+                  example: quasi
               required:
                 - category
                 - language
                 - title
                 - body
+                - content
       security: []
   /api/v2/57a7189f/knowledge/show:
     post:
-      summary: ''
-      operationId: postApiV257a7189fKnowledgeShow
-      description: ''
+      summary: 切换文章是否展示
+      operationId: ''
+      description: 切换这篇文章是对用户可见展示（开/关）。
       parameters: []
       responses: {  }
       tags:
@@ -5992,16 +6464,16 @@ paths:
               type: object
               properties:
                 id:
-                  type: number
-                  description: ''
-                  example: 77.049618
+                  type: integer
+                  description: 需要切换开关的知识点ID
+                  example: 2
               required:
                 - id
       security: []
   /api/v2/57a7189f/knowledge/drop:
     post:
-      summary: ''
-      operationId: postApiV257a7189fKnowledgeDrop
+      summary: 删除单篇知识文章
+      operationId: ''
       description: ''
       parameters: []
       responses: {  }
@@ -6015,17 +6487,17 @@ paths:
               type: object
               properties:
                 id:
-                  type: number
-                  description: ''
-                  example: 286.0
+                  type: integer
+                  description: '要移除的文章 ID'
+                  example: 14
               required:
                 - id
       security: []
   /api/v2/57a7189f/knowledge/sort:
     post:
-      summary: ''
-      operationId: postApiV257a7189fKnowledgeSort
-      description: ''
+      summary: 更新知识分类/文章排序
+      operationId: ''
+      description: '全量传入文章的排序 ID 数组（重新排版后）。'
       parameters: []
       responses: {  }
       tags:
@@ -6038,18 +6510,20 @@ paths:
               type: object
               properties:
                 ids:
-                  type: object
-                  description: ''
-                  example: []
-                  properties: {  }
+                  type: array
+                  description: 整理好的文章ID排列顺序
+                  example:
+                    - esse
+                  items:
+                    type: string
               required:
                 - ids
       security: []
   /api/v2/57a7189f/payment/fetch:
     get:
-      summary: ''
-      operationId: getApiV257a7189fPaymentFetch
-      description: ''
+      summary: 获取管理端支付网关列表
+      operationId: ''
+      description: 获取全部已配置好的支付渠道网关，并附加了接收回调通知所用的回调URL信息。
       parameters: []
       responses:
         403:
@@ -6069,9 +6543,9 @@ paths:
       security: []
   /api/v2/57a7189f/payment/getPaymentMethods:
     get:
-      summary: ''
-      operationId: getApiV257a7189fPaymentGetPaymentMethods
-      description: ''
+      summary: 获取支持的支付插件列表
+      operationId: ''
+      description: 读取系统内安装的所有扩展支付插件方法集（微信、支付宝、加密货币等）。
       parameters: []
       responses:
         403:
@@ -6091,19 +6565,36 @@ paths:
       security: []
   /api/v2/57a7189f/payment/getPaymentForm:
     post:
-      summary: ''
-      operationId: postApiV257a7189fPaymentGetPaymentForm
-      description: ''
+      summary: 获取支付网关表单配置
+      operationId: ''
+      description: 针对选择的某个具体支付插件获取其对应的动态表单结构（便于渲染表单让用户填入如商户ID、密钥等）。
       parameters: []
       responses: {  }
       tags:
         - '管理后台 API (Admin)'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                payment:
+                  type: string
+                  description: 支付插件驱动标识名
+                  example: inventore
+                id:
+                  type: integer
+                  description: 现有的支付记录ID（如果传入则附带已有配置值）
+                  example: 20
+              required:
+                - payment
       security: []
   /api/v2/57a7189f/payment/save:
     post:
-      summary: ''
-      operationId: postApiV257a7189fPaymentSave
-      description: ''
+      summary: 保存/编辑支付配置
+      operationId: ''
+      description: 从空白创建一个新的支付通道，或对已有通道参数（支持不同插件的不同表单配置格式）做二次变更。
       parameters: []
       responses: {  }
       tags:
@@ -6117,8 +6608,8 @@ paths:
               properties:
                 name:
                   type: string
-                  description: ''
-                  example: perferendis
+                  description: 用户前台显示名称
+                  example: quas
                 icon:
                   type: string
                   description: ''
@@ -6126,27 +6617,31 @@ paths:
                   nullable: true
                 payment:
                   type: string
-                  description: ''
-                  example: labore
+                  description: 驱动类标识名
+                  example: rem
                 config:
                   type: string
-                  description: ''
-                  example: accusamus
+                  description: 相关密钥配置的序列化内容
+                  example: vel
                 notify_domain:
                   type: string
                   description: 'Must be a valid URL.'
-                  example: 'http://kovacek.com/'
+                  example: 'http://www.sawayn.net/quo-distinctio-labore-in'
                   nullable: true
                 handling_fee_fixed:
                   type: integer
-                  description: ''
-                  example: 11
+                  description: 额外固定手续费
+                  example: 5
                   nullable: true
                 handling_fee_percent:
                   type: number
                   description: validation.between.
-                  example: 1
+                  example: 0
                   nullable: true
+                id:
+                  type: integer
+                  description: '待修改网关ID (新建时不传)'
+                  example: 14
               required:
                 - name
                 - payment
@@ -6154,28 +6649,54 @@ paths:
       security: []
   /api/v2/57a7189f/payment/drop:
     post:
-      summary: ''
-      operationId: postApiV257a7189fPaymentDrop
-      description: ''
+      summary: 删除支付通道
+      operationId: ''
+      description: 彻底从后台丢弃一个无用的支付网关配置。
       parameters: []
       responses: {  }
       tags:
         - '管理后台 API (Admin)'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: 待删除的支付网关ID
+                  example: 4
+              required:
+                - id
       security: []
   /api/v2/57a7189f/payment/show:
     post:
-      summary: ''
-      operationId: postApiV257a7189fPaymentShow
-      description: ''
+      summary: 切换支付网关开启状态
+      operationId: ''
+      description: '使用对应支付网关 ID 开启或关闭这个网关的前台可用度。'
       parameters: []
       responses: {  }
       tags:
         - '管理后台 API (Admin)'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: 需要开启/关闭的支付网关ID
+                  example: 9
+              required:
+                - id
       security: []
   /api/v2/57a7189f/payment/sort:
     post:
-      summary: ''
-      operationId: postApiV257a7189fPaymentSort
+      summary: 支付通道排序
+      operationId: ''
       description: ''
       parameters: []
       responses: {  }
@@ -6189,18 +6710,20 @@ paths:
               type: object
               properties:
                 ids:
-                  type: object
-                  description: ''
-                  example: []
-                  properties: {  }
+                  type: array
+                  description: '重新排列的由前至后网关 ID 列表数组'
+                  example:
+                    - dolorem
+                  items:
+                    type: string
               required:
                 - ids
       security: []
   /api/v2/57a7189f/system/getSystemStatus:
     get:
-      summary: ''
-      operationId: getApiV257a7189fSystemGetSystemStatus
-      description: ''
+      summary: 重获系统关键进程健康情况
+      operationId: ''
+      description: '检测异步任务队列环境 (Horizon/Schedule) 是否处于正常存活可监控状态下。'
       parameters: []
       responses:
         403:
@@ -6220,9 +6743,9 @@ paths:
       security: []
   /api/v2/57a7189f/system/getQueueStats:
     get:
-      summary: ''
-      operationId: getApiV257a7189fSystemGetQueueStats
-      description: ''
+      summary: 集中统计系统各项工作进程开销和历史堆积量
+      operationId: ''
+      description: '也就是 Laravel Horizon 的简易总控制面板概览API。'
       parameters: []
       responses:
         403:
@@ -6242,8 +6765,8 @@ paths:
       security: []
   /api/v2/57a7189f/system/getQueueWorkload:
     get:
-      summary: ''
-      operationId: getApiV257a7189fSystemGetQueueWorkload
+      summary: 读取所有可用队列的运行负载数据
+      operationId: ''
       description: ''
       parameters: []
       responses:
@@ -6286,10 +6809,30 @@ paths:
       security: []
   /api/v2/57a7189f/system/getHorizonFailedJobs:
     get:
-      summary: ''
-      operationId: getApiV257a7189fSystemGetHorizonFailedJobs
+      summary: 获取队列所有曾经爆炸执行失败的报错任务
+      operationId: ''
       description: ''
-      parameters: []
+      parameters:
+        -
+          in: query
+          name: current
+          description: 页码
+          example: 18
+          required: false
+          schema:
+            type: integer
+            description: 页码
+            example: 18
+        -
+          in: query
+          name: page_size
+          description: 容量大小
+          example: 11
+          required: false
+          schema:
+            type: integer
+            description: 容量大小
+            example: 11
       responses:
         403:
           description: ''
@@ -6308,10 +6851,60 @@ paths:
       security: []
   /api/v2/57a7189f/system/getAuditLog:
     get:
-      summary: ''
-      operationId: getApiV257a7189fSystemGetAuditLog
-      description: ''
-      parameters: []
+      summary: 拉取管理员操作行纪审计记录
+      operationId: ''
+      description: 安全审计和背锅专用溯源检索流。
+      parameters:
+        -
+          in: query
+          name: current
+          description: 页码
+          example: 4
+          required: false
+          schema:
+            type: integer
+            description: 页码
+            example: 4
+        -
+          in: query
+          name: page_size
+          description: 页大小
+          example: 20
+          required: false
+          schema:
+            type: integer
+            description: 页大小
+            example: 20
+        -
+          in: query
+          name: action
+          description: 动作类型过滤
+          example: eius
+          required: false
+          schema:
+            type: string
+            description: 动作类型过滤
+            example: eius
+        -
+          in: query
+          name: admin_id
+          description: 只看此位管理的记录
+          example: 19
+          required: false
+          schema:
+            type: integer
+            description: 只看此位管理的记录
+            example: 19
+        -
+          in: query
+          name: keyword
+          description: 在参数数据或路径中全文检索
+          example: modi
+          required: false
+          schema:
+            type: string
+            description: 在参数数据或路径中全文检索
+            example: modi
       responses:
         403:
           description: ''
@@ -6330,7 +6923,7 @@ paths:
       security: []
   /api/v2/57a7189f/theme/getThemes:
     get:
-      summary: 获取所有主题和其配置列
+      summary: 获取已安装所有前端主题列表及启用情况
       operationId: ''
       description: ''
       parameters: []
@@ -6352,9 +6945,9 @@ paths:
       security: []
   /api/v2/57a7189f/theme/upload:
     post:
-      summary: 上传新主题
+      summary: 上传扩展新主题皮肤包
       operationId: ''
-      description: ''
+      description: '以 .zip 的标准主题规格文件上传到服务器中供前端挑选配置。'
       parameters: []
       responses: {  }
       tags:
@@ -6375,10 +6968,72 @@ paths:
       security: []
   /api/v2/57a7189f/theme/delete:
     post:
-      summary: 删除主题
+      summary: 删除物理皮肤结构
       operationId: ''
       description: ''
       parameters: []
+      responses: {  }
+      tags:
+        - '管理后台 API (Admin)'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 想要除去的主题唯一识别代称名
+                  example: minima
+              required:
+                - name
+      security: []
+  /api/v2/57a7189f/theme/saveThemeConfig:
+    post:
+      summary: 固化更新当前这套特供主题选项
+      operationId: ''
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - '管理后台 API (Admin)'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 需要更新的是这套专属主题代称
+                  example: a
+                config:
+                  type: object
+                  description: 对象格式的该皮肤专属键值对应修改项
+                  example: []
+                  properties: {  }
+              required:
+                - name
+                - config
+      security: []
+  /api/v2/57a7189f/theme/getThemeConfig:
+    post:
+      summary: 获取主题下辖自定义配置表单项集
+      operationId: ''
+      description: 大多高端主题带有自己专属的幻灯片、页脚修改、色卡调节设置可供调整。
+      parameters:
+        -
+          in: query
+          name: name
+          description: 查询对应主题拥有的配置集
+          example: distinctio
+          required: true
+          schema:
+            type: string
+            description: 查询对应主题拥有的配置集
+            example: distinctio
       responses: {  }
       tags:
         - '管理后台 API (Admin)'
@@ -6396,62 +7051,11 @@ paths:
               required:
                 - name
       security: []
-  /api/v2/57a7189f/theme/saveThemeConfig:
-    post:
-      summary: 保存主题配置
-      operationId: ''
-      description: ''
-      parameters: []
-      responses: {  }
-      tags:
-        - '管理后台 API (Admin)'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                  description: ''
-                  example: voluptatem
-                config:
-                  type: string
-                  description: ''
-                  example: error
-              required:
-                - name
-                - config
-      security: []
-  /api/v2/57a7189f/theme/getThemeConfig:
-    post:
-      summary: 获取主题配置
-      operationId: ''
-      description: ''
-      parameters: []
-      responses: {  }
-      tags:
-        - '管理后台 API (Admin)'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                  description: ''
-                  example: et
-              required:
-                - name
-      security: []
   /api/v2/57a7189f/plugin/types:
     get:
       summary: 获取所有插件类型
       operationId: ''
-      description: ''
+      description: 读取系统内定义好的可用插件类型列表（如功能型、支付型）。
       parameters: []
       responses:
         403:
@@ -6471,9 +7075,9 @@ paths:
       security: []
   /api/v2/57a7189f/plugin/getPlugins:
     get:
-      summary: 获取插件列表
+      summary: 获取已有插件列表
       operationId: ''
-      description: ''
+      description: "读取在本地 `plugins/` 目录中的所有插件包，获取其元信息并在控制台展示。\n支持查询特定的 type 类型过滤。"
       parameters: []
       responses:
         403:
@@ -6493,9 +7097,9 @@ paths:
       security: []
   /api/v2/57a7189f/plugin/upload:
     post:
-      summary: 上传插件
-      operationId: ''
-      description: ''
+      summary: '全新上传自用插件 zip 压缩包'
+      operationId: Zip
+      description: '上传符合 xboard 的专用结构打包 .zip。'
       parameters: []
       responses: {  }
       tags:
@@ -6516,9 +7120,9 @@ paths:
       security: []
   /api/v2/57a7189f/plugin/delete:
     post:
-      summary: 删除插件
+      summary: 物理删除无用的插件代码结构
       operationId: ''
-      description: ''
+      description: 必须已经卸载，系统内置保护核心插件不可被删除。
       parameters: []
       responses: {  }
       tags:
@@ -6532,16 +7136,16 @@ paths:
               properties:
                 code:
                   type: string
-                  description: ''
-                  example: rerum
+                  description: 要删代码包的插件标识
+                  example: vero
               required:
                 - code
       security: []
   /api/v2/57a7189f/plugin/install:
     post:
-      summary: 安装插件
+      summary: 安装系统插件
       operationId: ''
-      description: ''
+      description: 为某个合法存在于内部的插件文件进行挂载和数据库环境搭建初始化。
       parameters: []
       responses: {  }
       tags:
@@ -6555,8 +7159,8 @@ paths:
               properties:
                 code:
                   type: string
-                  description: ''
-                  example: minima
+                  description: 目标插件对应的包名代码
+                  example: nihil
               required:
                 - code
       security: []
@@ -6564,7 +7168,7 @@ paths:
     post:
       summary: 卸载插件
       operationId: ''
-      description: ''
+      description: 需要其被禁用后方可彻底卸载清除环境资产。
       parameters: []
       responses: {  }
       tags:
@@ -6578,14 +7182,14 @@ paths:
               properties:
                 code:
                   type: string
-                  description: ''
-                  example: omnis
+                  description: 目标卸载的特征包名
+                  example: sunt
               required:
                 - code
       security: []
   /api/v2/57a7189f/plugin/enable:
     post:
-      summary: 启用插件
+      summary: 启动/启用插件功能
       operationId: ''
       description: ''
       parameters: []
@@ -6601,14 +7205,14 @@ paths:
               properties:
                 code:
                   type: string
-                  description: ''
-                  example: consequuntur
+                  description: 被操作插件特征包名
+                  example: quam
               required:
                 - code
       security: []
   /api/v2/57a7189f/plugin/disable:
     post:
-      summary: 禁用插件
+      summary: 关停/禁用插件
       operationId: ''
       description: ''
       parameters: []
@@ -6624,17 +7228,27 @@ paths:
               properties:
                 code:
                   type: string
-                  description: ''
-                  example: provident
+                  description: 被操作插件特征包名
+                  example: quidem
               required:
                 - code
       security: []
   /api/v2/57a7189f/plugin/config:
     get:
-      summary: 获取插件配置
+      summary: 获取某个插件运行选项配置
       operationId: ''
       description: ''
-      parameters: []
+      parameters:
+        -
+          in: query
+          name: code
+          description: 对应参数的插件包名
+          example: nostrum
+          required: true
+          schema:
+            type: string
+            description: 对应参数的插件包名
+            example: nostrum
       responses:
         403:
           description: ''
@@ -6660,14 +7274,14 @@ paths:
                 code:
                   type: string
                   description: ''
-                  example: ex
+                  example: distinctio
               required:
                 - code
       security: []
     post:
-      summary: 更新插件配置
+      summary: 提交保存插件设置
       operationId: ''
-      description: ''
+      description: 对插件自己抛出定义的需要表单配置执行设值。
       parameters: []
       responses: {  }
       tags:
@@ -6681,22 +7295,24 @@ paths:
               properties:
                 code:
                   type: string
-                  description: ''
-                  example: asperiores
+                  description: 配置目标关联包名
+                  example: beatae
                 config:
-                  type: object
-                  description: ''
-                  example: []
-                  properties: {  }
+                  type: array
+                  description: 配置键值对
+                  example:
+                    - enim
+                  items:
+                    type: string
               required:
                 - code
                 - config
       security: []
   /api/v2/57a7189f/plugin/upgrade:
     post:
-      summary: 升级插件
+      summary: 升级更新插件
       operationId: ''
-      description: ''
+      description: '控制台检测到本地包文件 Version 大于数据库记载 Version 时可调用自动更新。'
       parameters: []
       responses: {  }
       tags:
@@ -6710,8 +7326,8 @@ paths:
               properties:
                 code:
                   type: string
-                  description: ''
-                  example: rerum
+                  description: 想要升级打补丁的特征包名
+                  example: error
               required:
                 - code
       security: []
@@ -6719,7 +7335,7 @@ paths:
     get:
       summary: 获取流量重置日志列表
       operationId: ''
-      description: ''
+      description: 查询记录下来的每一次针对具体用户的流量清重置日志事件。
       parameters: []
       responses:
         403:
@@ -6746,12 +7362,12 @@ paths:
                 user_id:
                   type: integer
                   description: ''
-                  example: 11
+                  example: 10
                   nullable: true
                 user_email:
                   type: string
                   description: ''
-                  example: jed.gaylord@example.net
+                  example: connelly.guiseppe@example.com
                   nullable: true
                 reset_type:
                   type: string
@@ -6764,30 +7380,40 @@ paths:
                 start_date:
                   type: string
                   description: validation.date.
-                  example: '2026-04-15T03:15:07'
+                  example: '2026-04-15T03:27:41'
                   nullable: true
                 end_date:
                   type: string
                   description: 'validation.date validation.after_or_equal.'
-                  example: '2034-12-27'
+                  example: '2124-04-17'
                   nullable: true
                 per_page:
                   type: integer
                   description: 'validation.min validation.max.'
-                  example: 9
+                  example: 19
                   nullable: true
                 page:
                   type: integer
                   description: validation.min.
-                  example: 86
+                  example: 10
                   nullable: true
       security: []
   /api/v2/57a7189f/traffic-reset/stats:
     get:
       summary: 获取流量重置统计信息
       operationId: ''
-      description: ''
-      parameters: []
+      description: 取近多少天内的自动清空和手动清空触发事件的数据占比饼图数据。
+      parameters:
+        -
+          in: query
+          name: days
+          description: 往前回溯天数
+          example: 30
+          required: false
+          schema:
+            type: integer
+            description: 往前回溯天数
+            example: 30
       responses:
         403:
           description: ''
@@ -6813,14 +7439,14 @@ paths:
                 days:
                   type: integer
                   description: 'validation.min validation.max.'
-                  example: 15
+                  example: 21
                   nullable: true
       security: []
   '/api/v2/57a7189f/traffic-reset/user/{userId}/history':
     get:
-      summary: 获取用户重置历史
+      summary: 获取单用户流量重置历史
       operationId: ''
-      description: ''
+      description: 获取指定某位用户历次被清空其用量的详细存档追溯流。
       parameters: []
       responses:
         403:
@@ -6847,15 +7473,15 @@ paths:
                 limit:
                   type: integer
                   description: 'validation.min validation.max.'
-                  example: 10
+                  example: 13
                   nullable: true
       security: []
     parameters:
       -
         in: path
         name: userId
-        description: ''
-        example: 1
+        description: '要回溯日志的目标用户 ID'
+        example: 13
         required: true
         schema:
           type: integer
@@ -6863,7 +7489,7 @@ paths:
     post:
       summary: 手动重置用户流量
       operationId: ''
-      description: ''
+      description: 管理员在后台直接清空重算目标用户累计已使用的上行和下行传输量（一键恢复初始额度）。
       parameters: []
       responses: {  }
       tags:
@@ -6877,12 +7503,12 @@ paths:
               properties:
                 user_id:
                   type: integer
-                  description: 'The <code>id</code> of an existing record in the v2_user table.'
+                  description: '要清空清算的户主归属 ID'
                   example: 9
                 reason:
                   type: string
-                  description: validation.max.
-                  example: rogfkzqlnlqiqpmhdrnyxe
+                  description: 手工重置说明/理由/备注
+                  example: dolorem
                   nullable: true
               required:
                 - user_id

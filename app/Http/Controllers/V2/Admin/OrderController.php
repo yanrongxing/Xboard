@@ -20,6 +20,13 @@ use Illuminate\Support\Facades\Log;
 class OrderController extends Controller
 {
 
+    /**
+     * 获取订单详情
+     * 
+     * 获取单一订单的所有相关连同上下文数据（如用户信息、购买的套餐快照、甚至如果分发了佣金包含的佣金账单记录）。
+     * 
+     * @queryParam id int required 需要查询详细信息的记录 ID
+     */
     public function detail(Request $request)
     {
         $order = Order::with(['user', 'plan', 'commission_log', 'invite_user'])->find($request->input('id'));
@@ -32,6 +39,15 @@ class OrderController extends Controller
         return $this->success($order);
     }
 
+    /**
+     * 获取订单列表
+     * 
+     * 查询所有由用户主动或系统开出的账单流水。可专门筛选出包含了渠道返利的明细。
+     * 
+     * @queryParam is_commission bool 可选，如果为true则仅查询有佣金入账的邀请订单
+     * @queryParam current int 当前页码
+     * @queryParam pageSize int 每页容量
+     */
     public function fetch(Request $request)
     {
         $current = $request->input('current', 1);
@@ -140,6 +156,13 @@ class OrderController extends Controller
         });
     }
 
+    /**
+     * 手动标记订单已支付
+     * 
+     * 管理员在后台针对处于[挂起/未支付]状态的订单强制设定为支付成功状态（模拟收到现金操作）。
+     * 
+     * @bodyParam trade_no string required 订单系统交易号
+     */
     public function paid(Request $request)
     {
         $order = Order::where('trade_no', $request->input('trade_no'))
@@ -157,6 +180,13 @@ class OrderController extends Controller
         return $this->success(true);
     }
 
+    /**
+     * 手动取消未支付订单
+     * 
+     * 管理员在后台直接关闭放弃/驳回某个长时间未入账的僵尸订单记录。
+     * 
+     * @bodyParam trade_no string required 要撤销掉的订单支付流水单号
+     */
     public function cancel(Request $request)
     {
         $order = Order::where('trade_no', $request->input('trade_no'))
@@ -174,6 +204,14 @@ class OrderController extends Controller
         return $this->success(true);
     }
 
+    /**
+     * 更新订单抽成状态等简要设置
+     * 
+     * 例如可被用于更改此笔订单的最终返利到账标记等操作。
+     * 
+     * @bodyParam trade_no string required 必选更新的订单交易流水号
+     * @bodyParam commission_status int 佣金下发审核是否成功已入账
+     */
     public function update(OrderUpdate $request)
     {
         $params = $request->only([
@@ -196,6 +234,16 @@ class OrderController extends Controller
         return $this->success(true);
     }
 
+    /**
+     * 后台强制分发创建订单
+     * 
+     * 管理员代替用户手工在后台挂上一笔未支付的新订阅账单。支持分配特定的购买套餐、时效等等。
+     * 
+     * @bodyParam email string required 针对分配购买的主人账号邮箱
+     * @bodyParam plan_id int required 强行开通并分配指向的商品套餐 ID
+     * @bodyParam period string required 这次分配想让它续或买多久 (month/quarter 等)
+     * @bodyParam total_amount int required 为该笔订单设置的需收款面值(分)
+     */
     public function assign(OrderAssign $request)
     {
         $plan = Plan::find($request->input('plan_id'));

@@ -123,6 +123,10 @@ class UserService
         // Compatible with legacy hook
         list($server, $protocol, $data) = HookManager::filter('traffic.before_process', [$server, $protocol, $data]);
 
+        $data = array_filter($data, function ($item) {
+            return is_array($item) && isset($item[0], $item[1]) && is_numeric($item[0]) && is_numeric($item[1]) && $item[0] >= 0 && $item[1] >= 0;
+        });
+
         $timestamp = strtotime(date('Y-m-d'));
         collect($data)->chunk(1000)->each(function ($chunk) use ($timestamp, $server, $protocol) {
             TrafficFetchJob::dispatch($server, $chunk->toArray(), $protocol, $timestamp);

@@ -12,6 +12,11 @@ use Illuminate\Http\JsonResponse;
 
 class GroupController extends Controller
 {
+    /**
+     * 获取所有服节点分组名称类别
+     * 
+     * 提取配置出给系统节点标记的分组情况数组（比如按地区、按使用等级划分组别名集合）。
+     */
     public function fetch(Request $request): JsonResponse
     {
         $serverGroups = ServerGroup::query()
@@ -27,6 +32,14 @@ class GroupController extends Controller
         return $this->success($serverGroups);
     }
 
+    /**
+     * 建立保存配置新建分组
+     * 
+     * 记录写下一个全新的服分组类别记录。
+     * 
+     * @bodyParam id int 如果带传入则是修改旧有的分组名称而并非新建
+     * @bodyParam name string required 被分配的识别名称（例: [VIP3] 东南亚原生服）
+     */
     public function save(Request $request)
     {
         if (empty($request->input('name'))) {
@@ -43,6 +56,13 @@ class GroupController extends Controller
         return $this->success($serverGroup->save());
     }
 
+    /**
+     * 从系统移除删除废弃服务器分组
+     * 
+     * 检查验证如果当前这个需要删除的组中还正在关联任意物理机节点、用户，则不允许操作。
+     * 
+     * @bodyParam id int required 需要物理抹除的机器类别分组记录 ID 号
+     */
     public function drop(Request $request)
     {
         $groupId = $request->input('id');

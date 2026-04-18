@@ -21,6 +21,11 @@ class StatController extends Controller
     {
         $this->service = $service;
     }
+    /**
+     * 获取后台总览统计大盘
+     * 
+     * 汇集整个Xboard当前各类的基础在线健康度及营收数字统计汇总大盘报表。
+     */
     public function getOverride(Request $request)
     {
         // 获取在线节点数
@@ -109,6 +114,15 @@ class StatController extends Controller
      *
      * @param Request $request
      * @return array
+     */
+    /**
+     * 获取财务收入流水及佣金对账表
+     * 
+     * 提供管理控制台有关近期内平台盈利、出款流水的汇总统计对账与每日分图数据。
+     *
+     * @queryParam start_date string 可选检索统计日历起点 Example: 2024-01-01
+     * @queryParam end_date string 可选检索统计日历终点 Example: 2024-01-31
+     * @queryParam type string 抽取单一指定的指标列名称
      */
     public function getOrder(Request $request)
     {
@@ -215,18 +229,30 @@ class StatController extends Controller
     }
 
     // 获取当日实时流量排行
+    /**
+     * 获取当日各节点实时跑量排名
+     */
     public function getServerLastRank()
     {
         $data = $this->service->getServerRank();
         return $this->success(data: $data);
     }
     // 获取昨日节点流量排行
+    /**
+     * 获取昨日各节点流量排行榜单
+     */
     public function getServerYesterdayRank()
     {
         $data = $this->service->getServerRank('yesterday');
         return $this->success($data);
     }
 
+    /**
+     * 提取特定用户的详细流量上报日志
+     * 
+     * @queryParam user_id int required 所指明查证监控的用户 ID 
+     * @queryParam pageSize int 每页翻页长度 Example: 10
+     */
     public function getStatUser(Request $request)
     {
         $request->validate([
@@ -245,6 +271,9 @@ class StatController extends Controller
         ];
     }
 
+    /**
+     * 取通用历史归档统计单线图表趋势集
+     */
     public function getStatRecord(Request $request)
     {
         return [
@@ -254,6 +283,11 @@ class StatController extends Controller
 
     /**
      * Get comprehensive statistics data including income, users, and growth rates
+     */
+    /**
+     * 获取带有相对增长率的新款超级统计大盘
+     * 
+     * 这是更新版的前端Dashboard首屏大屏看板，附带有各项关键运营指标（日增环比增长百分率等），非常详尽。
      */
     public function getStats()
     {
@@ -426,6 +460,15 @@ class StatController extends Controller
      * 
      * @param Request $request
      * @return array
+     */
+    /**
+     * 获取最新流量飙车/消耗冠军榜排名
+     * 
+     * 支持查询任意时间段内全平台【消耗流量最大的黑洞老鼠用户列表】或者【承担数据穿透最大的重载服务器列表】及环比同期浮动。
+     * 
+     * @queryParam type string required 指定输出排行对象的类型，取值 node 或 user
+     * @queryParam start_time int 开始计算统计的 UTC 时间戳
+     * @queryParam end_time int 统计界限终止 UTC 时间戳
      */
     public function getTrafficRank(Request $request)
     {

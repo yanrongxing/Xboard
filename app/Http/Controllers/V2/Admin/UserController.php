@@ -26,6 +26,13 @@ class UserController extends Controller
 {
     use QueryOperators;
 
+    /**
+     * 重置用户的安全令牌凭据
+     * 
+     * 强制清洗用户的 UUID 和 Token 订阅流地址等防泄漏操作，一般用于用户自诉外泄时的风控强制阻断。
+     * 
+     * @bodyParam id int required 需要操作洗白的用户记录 ID
+     */
     public function resetSecret(Request $request)
     {
         $user = User::find($request->input('id'));
@@ -168,6 +175,14 @@ class UserController extends Controller
     }
 
     // Fetch paginated user list (filters + sorting).
+    /**
+     * 高级筛选分页搜索全站用户
+     * 
+     * 返回经过关联脱敏后的用户主数据大列表并涵盖所持套餐、邮箱等各类简要状态标识。
+     * 
+     * @queryParam current int 可选，当前加载页
+     * @queryParam pageSize int 每页要求多少名成员
+     */
     public function fetch(Request $request)
     {
         $current = $request->input('current', 1);
@@ -200,6 +215,13 @@ class UserController extends Controller
         return $user;
     }
 
+    /**
+     * 获取特定用户详细档口
+     * 
+     * 从单独用户记录 ID 查验获取他的具体全面信息。
+     * 
+     * @queryParam id int required 被查询者的 User_ID 面板标
+     */
     public function getUserInfoById(Request $request)
     {
         $request->validate([
@@ -211,6 +233,13 @@ class UserController extends Controller
         return $this->success($user);
     }
 
+    /**
+     * 更新保存普通用户的各类参数
+     * 
+     * 万能操作修改器方法（修改余额、套餐等级、封禁、重设改绑邮箱、加钱扣钱全量大集合修改器）。
+     * 
+     * @bodyParam id int required 必然传需要改的目标户主
+     */
     public function update(UserUpdate $request)
     {
         $params = $request->validated();
@@ -267,6 +296,14 @@ class UserController extends Controller
     }
 
     // Export users to CSV.
+    /**
+     * 大规模导出筛选的用户明细 CSV
+     * 
+     * 把目前筛选出的或者批量选定的用户群体做一次性的资产订阅详情信息文本提取。
+     * 
+     * @bodyParam scope string required 指明目标范围是'selected'手动勾选的 / 'filtered'筛选结果的 还是全部的
+     * @bodyParam user_ids array 对选定的生效传入的 ID list
+     */
     public function dumpCSV(Request $request)
     {
         ini_set('memory_limit', '-1');
@@ -360,6 +397,11 @@ class UserController extends Controller
         ]);
     }
 
+    /**
+     * 矩阵式新户批量生成
+     * 
+     * 管理员可以一次性凭借前缀和随机密码，建立成百上千包含时效/套餐绑定的新账号资源用于下发活动卡。
+     */
     public function generate(UserGenerate $request)
     {
         if ($request->input('email_prefix')) {
@@ -546,6 +588,15 @@ class UserController extends Controller
         ]);
     }
 
+    /**
+     * 向范围选定用户发送系统批次邮件广播
+     * 
+     * 通过后台调度群发特定的业务推广或者割草提醒。
+     * 
+     * @bodyParam scope string 选择框定人员的群体判定逻辑
+     * @bodyParam subject string required 信件主旨
+     * @bodyParam content string required 信件富文本代码
+     */
     public function sendMail(UserSendMail $request)
     {
         ini_set('memory_limit', '-1');
@@ -617,6 +668,13 @@ class UserController extends Controller
         return $this->success(true);
     }
 
+    /**
+     * 批量封禁违规用户群
+     * 
+     * 让框选的一批账号瞬间进入封停状态不可用。
+     * 
+     * @bodyParam scope string required 封禁影响圈子的逻辑说明
+     */
     public function ban(Request $request)
     {
         $scopeInfo = $this->resolveScope($request);
@@ -655,6 +713,13 @@ class UserController extends Controller
     }
 
     // Delete user and related data.
+    /**
+     * 斩草除根：深层销毁用户全部痕迹
+     * 
+     * 彻底从持久层抹去目标角色相关的所有表单、信件、工单、连接和账户实体关联资源。
+     * 
+     * @bodyParam id int required 需要永久销毁的数据主 ID
+     */
     public function destroy(Request $request)
     {
         $request->validate([
