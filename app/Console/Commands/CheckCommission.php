@@ -47,10 +47,10 @@ class CheckCommission extends Command
 
     public function autoCheck()
     {
-        if ((int)admin_setting('commission_auto_check_enable', 1)) {
+        if ((int) admin_setting('commission_auto_check_enable', 1)) {
             Order::where('commission_status', 0)
                 ->where('invite_user_id', '!=', NULL)
-                ->where('status', 3)
+                ->whereIn('status', [3, 4])
                 ->where('updated_at', '<=', strtotime('-3 day', time()))
                 ->update([
                     'commission_status' => 1
@@ -64,7 +64,7 @@ class CheckCommission extends Command
             ->where('invite_user_id', '!=', NULL)
             ->get();
         foreach ($orders as $order) {
-            try{
+            try {
                 DB::beginTransaction();
                 if (!$this->payHandle($order->invite_user_id, $order)) {
                     DB::rollBack();
@@ -76,7 +76,7 @@ class CheckCommission extends Command
                     continue;
                 }
                 DB::commit();
-            } catch (\Exception $e){
+            } catch (\Exception $e) {
                 DB::rollBack();
                 throw $e;
             }
@@ -86,11 +86,11 @@ class CheckCommission extends Command
     public function payHandle($inviteUserId, Order $order)
     {
         $level = 3;
-        if ((int)admin_setting('commission_distribution_enable', 0)) {
+        if ((int) admin_setting('commission_distribution_enable', 0)) {
             $commissionShareLevels = [
-                0 => (int)admin_setting('commission_distribution_l1'),
-                1 => (int)admin_setting('commission_distribution_l2'),
-                2 => (int)admin_setting('commission_distribution_l3')
+                0 => (int) admin_setting('commission_distribution_l1'),
+                1 => (int) admin_setting('commission_distribution_l2'),
+                2 => (int) admin_setting('commission_distribution_l3')
             ];
         } else {
             $commissionShareLevels = [
@@ -99,11 +99,14 @@ class CheckCommission extends Command
         }
         for ($l = 0; $l < $level; $l++) {
             $inviter = User::find($inviteUserId);
-            if (!$inviter) continue;
-            if (!isset($commissionShareLevels[$l])) continue;
+            if (!$inviter)
+                continue;
+            if (!isset($commissionShareLevels[$l]))
+                continue;
             $commissionBalance = $order->commission_balance * ($commissionShareLevels[$l] / 100);
-            if (!$commissionBalance) continue;
-            if ((int)admin_setting('withdraw_close_enable', 0)) {
+            if (!$commissionBalance)
+                continue;
+            if ((int) admin_setting('withdraw_close_enable', 0)) {
                 $inviter->increment('balance', $commissionBalance);
             } else {
                 $inviter->increment('commission_balance', $commissionBalance);

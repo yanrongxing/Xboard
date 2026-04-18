@@ -25,7 +25,7 @@ class InviteController extends Controller
     public function save(Request $request)
     {
         if (InviteCode::where('user_id', $request->user()->id)->where('status', 0)->count() >= admin_setting('invite_gen_limit', 5)) {
-            return $this->fail([400,__('The maximum number of creations has been reached')]);
+            return $this->fail([400, __('The maximum number of creations has been reached')]);
         }
         $inviteCode = new InviteCode();
         $inviteCode->user_id = $request->user()->id;
@@ -70,11 +70,11 @@ class InviteController extends Controller
     {
         $commission_rate = admin_setting('invite_commission', 10);
         $user = User::find($request->user()->id)
-                ->load(['codes' => fn($query) => $query->where('status', 0)]);
+            ->load(['codes' => fn($query) => $query->where('status', 0)]);
         if ($user->commission_rate) {
             $commission_rate = $user->commission_rate;
         }
-        $uncheck_commission_balance = (int)Order::where('status', 3)
+        $uncheck_commission_balance = (int) Order::whereIn('status', [3, 4])
             ->where('commission_status', 0)
             ->where('invite_user_id', $user->id)
             ->sum('commission_balance');
@@ -83,16 +83,16 @@ class InviteController extends Controller
         }
         $stat = [
             //已注册用户数
-            (int)User::where('invite_user_id', $user->id)->count(),
+            (int) User::where('invite_user_id', $user->id)->count(),
             //有效的佣金
-            (int)CommissionLog::where('invite_user_id', $user->id)
+            (int) CommissionLog::where('invite_user_id', $user->id)
                 ->sum('get_amount'),
             //确认中的佣金
             $uncheck_commission_balance,
             //佣金比例
-            (int)$commission_rate,
+            (int) $commission_rate,
             //可用佣金
-            (int)$user->commission_balance
+            (int) $user->commission_balance
         ];
         $data = [
             'codes' => InviteCodeResource::collection($user->codes),
