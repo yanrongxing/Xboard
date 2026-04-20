@@ -149,17 +149,23 @@ class AppController extends Controller
             strpos($request->header('user-agent'), 'tidalab/4.0.0') !== false
             || strpos($request->header('user-agent'), 'tunnelab/4.0.0') !== false
         ) {
-            if (strpos($request->header('user-agent'), 'Win64') !== false) {
-                $data = [
-                    'version' => admin_setting('windows_version'),
-                    'download_url' => admin_setting('windows_download_url')
-                ];
+            $userAgent = $request->header('user-agent');
+            if (strpos($userAgent, 'Win64') !== false || strpos($userAgent, 'Windows') !== false) {
+                $platform = 'windows';
+            } elseif (strpos($userAgent, 'Android') !== false) {
+                $platform = 'android';
+            } elseif (strpos($userAgent, 'iPhone') !== false || strpos($userAgent, 'iPad') !== false || strpos($userAgent, 'iOS') !== false) {
+                $platform = 'ios';
             } else {
-                $data = [
-                    'version' => admin_setting('macos_version'),
-                    'download_url' => admin_setting('macos_download_url')
-                ];
+                $platform = 'macos';
             }
+
+            $data = [
+                'version' => admin_setting("{$platform}_version"),
+                'download_url' => admin_setting("{$platform}_download_url"),
+                'is_force_update' => admin_setting("{$platform}_is_force_update", 0),
+                'update_content' => admin_setting("{$platform}_update_content")
+            ];
         } else {
             $data = [
                 'windows_version' => admin_setting('windows_version'),
