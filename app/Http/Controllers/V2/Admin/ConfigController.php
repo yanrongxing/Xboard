@@ -147,6 +147,8 @@ class ConfigController extends Controller
                 'try_out_plan_id' => (int) admin_setting('try_out_plan_id', 0),
                 'try_out_hour' => (int) admin_setting('try_out_hour', 1),
                 'tos_url' => admin_setting('tos_url'),
+                'privacy_url' => admin_setting('privacy_url'),
+                'terms_url' => admin_setting('terms_url'),
                 'currency' => admin_setting('currency', 'CNY'),
                 'currency_symbol' => admin_setting('currency_symbol', '¥'),
                 'ticket_must_wait_reply' => (bool) admin_setting('ticket_must_wait_reply', 0),

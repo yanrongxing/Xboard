@@ -128,3 +128,5 @@ __    __ ____                      _
 快捷清空.env命令：
 
  rm .env && touch .env
+
+ docker-compose exec web php artisan octane:reload
