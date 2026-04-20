@@ -254,6 +254,10 @@ class UserController extends Controller
         $currentTokenId = $request->user()->currentAccessToken()?->id;
         $user['can_connect_vpn'] = $currentTokenId ? \App\Services\AuthService::canConnectVpn($request->user(), $currentTokenId) : true;
 
+        if (!$user['can_connect_vpn']) {
+            $user['subscribe_url'] = '';
+        }
+
         $user = HookManager::filter('user.subscribe.response', $user);
         return $this->success($user);
     }
