@@ -15,14 +15,39 @@ class AuthService
         $this->user = $user;
     }
 
-    public function generateAuthData(): array
+    public function generateAuthData($deviceInfo = []): array
     {
+        // For backwards compatibility, if it's a string, treat it as deviceName
+        if (is_string($deviceInfo)) {
+            $deviceInfo = ['device_name' => $deviceInfo];
+        }
+
+        $deviceName = $deviceInfo['device_name'] ?? 'unknown';
+        $isApp = $deviceInfo['is_app'] ?? false;
+        $deviceId = $deviceInfo['device_id'] ?? null;
+        $deviceType = $deviceInfo['device_type'] ?? null;
+
+        // Deduplication: if app device and device_id exists, revoke old token
+        if ($isApp && $deviceId) {
+            $this->user->tokens()
+                ->where('is_app', true)
+                ->where('device_id', $deviceId)
+                ->delete();
+        }
+
         // Create a new Sanctum token with device info
         $token = $this->user->createToken(
-            Str::random(20), // token name (device identifier)
+            $deviceName, // device identifier: android, ios, windows, macos, web, etc.
             ['*'], // abilities
             now()->addYear() // expiration
         );
+
+        // Save custom metadata
+        $tokenModel = $token->accessToken;
+        $tokenModel->is_app = $isApp;
+        $tokenModel->device_id = $deviceId;
+        $tokenModel->device_type = $deviceType;
+        $tokenModel->save();
 
         // Format token: remove ID prefix and add Bearer
         $tokenParts = explode('|', $token->plainTextToken);
@@ -32,7 +57,24 @@ class AuthService
             'token' => $this->user->token,
             'auth_data' => $formattedToken,
             'is_admin' => $this->user->is_admin,
+            'session_id' => $tokenModel->id,
         ];
+    }
+
+    public static function canConnectVpn(User $user, $currentTokenId): bool
+    {
+        // Get all app tokens ordered by creation time
+        $tokens = $user->tokens()->where('is_app', true)->orderBy('created_at', 'asc')->get();
+        $rank = 1;
+        foreach ($tokens as $t) {
+            if ($t->id == $currentTokenId) {
+                // Return true if within the allowed device limit
+                return $rank <= max(1, (int)$user->device_limit);
+            }
+            $rank++;
+        }
+        // If not an app token, no app-level restriction
+        return true; 
     }
 
     public function getSessions(): array
