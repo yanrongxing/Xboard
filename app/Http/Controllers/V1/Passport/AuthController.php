@@ -73,7 +73,13 @@ class AuthController extends Controller
         }
 
         $authService = new AuthService($result);
-        return $this->success($authService->generateAuthData());
+        $deviceInfo = [
+            'is_app' => $request->boolean('is_app', false),
+            'device_id' => $request->input('device_id'),
+            'device_name' => $request->input('device_name', 'unknown'),
+            'device_type' => $request->input('device_type'),
+        ];
+        return $this->success($authService->generateAuthData($deviceInfo));
     }
 
     /**
@@ -95,7 +101,13 @@ class AuthController extends Controller
         }
 
         $authService = new AuthService($result);
-        return $this->success($authService->generateAuthData());
+        $deviceInfo = [
+            'is_app' => $request->boolean('is_app', false),
+            'device_id' => $request->input('device_id'),
+            'device_name' => $request->input('device_name', 'unknown'),
+            'device_type' => $request->input('device_type'),
+        ];
+        return $this->success($authService->generateAuthData($deviceInfo));
     }
 
     /**
@@ -140,7 +152,10 @@ class AuthController extends Controller
             $authService = new AuthService($user);
 
             return response()->json([
-                'data' => $authService->generateAuthData()
+                'data' => $authService->generateAuthData([
+                    'is_app' => false,
+                    'device_name' => 'web'
+                ])
             ]);
         }
 
