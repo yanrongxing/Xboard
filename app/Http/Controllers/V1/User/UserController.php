@@ -40,8 +40,38 @@ class UserController extends Controller
     public function getActiveSession(Request $request)
     {
         $user = $request->user();
-        $authService = new AuthService($user);
-        return $this->success($authService->getSessions());
+        $tokens = $user->tokens()->orderBy('created_at', 'asc')->get();
+        $currentTokenId = $user->currentAccessToken()?->id;
+        $deviceLimit = max(1, (int)$user->device_limit);
+        
+        $appRank = 1;
+        $result = [];
+
+        foreach ($tokens as $token) {
+            $isApp = (bool)$token->is_app;
+            $isActive = true;
+            
+            if ($isApp) {
+                if ($appRank > $deviceLimit) {
+                    $isActive = false;
+                }
+                $appRank++;
+            }
+
+            $result[] = [
+                'id' => $token->id,
+                'is_app' => $isApp,
+                'device_id' => $token->device_id,
+                'device_name' => $token->name, // Sanctum stores it in name
+                'device_type' => $token->device_type,
+                'last_used_at' => $token->last_used_at,
+                'created_at' => $token->created_at,
+                'is_current' => $token->id == $currentTokenId,
+                'is_active' => $isActive, // true means allowed, false means over limit
+            ];
+        }
+
+        return $this->success($result);
     }
 
     /**
@@ -150,6 +180,11 @@ class UserController extends Controller
             return $this->fail([400, __('The user does not exist')]);
         }
         $user['avatar_url'] = 'https://cdn.v2ex.com/gravatar/' . md5($user->email) . '?s=64&d=identicon';
+        
+        // Add can_connect_vpn flag
+        $currentTokenId = $request->user()->currentAccessToken()?->id;
+        $user['can_connect_vpn'] = $currentTokenId ? \App\Services\AuthService::canConnectVpn($request->user(), $currentTokenId) : true;
+
         return $this->success($user);
     }
 
@@ -214,6 +249,11 @@ class UserController extends Controller
         $user['subscribe_url'] = Helper::getSubscribeUrl($user['token']);
         $userService = new UserService();
         $user['reset_day'] = $userService->getResetDay($user);
+        
+        // Add can_connect_vpn flag
+        $currentTokenId = $request->user()->currentAccessToken()?->id;
+        $user['can_connect_vpn'] = $currentTokenId ? \App\Services\AuthService::canConnectVpn($request->user(), $currentTokenId) : true;
+
         $user = HookManager::filter('user.subscribe.response', $user);
         return $this->success($user);
     }
