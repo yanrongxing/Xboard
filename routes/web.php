@@ -40,12 +40,12 @@ Route::any("/{$securePath}/custom-api", function(Request $request) use ($secureP
             <div id="app-content"></div>
             <script>
                 // 从管理后台的 localStorage 中提取真实的 auth token
-                let authData = localStorage.getItem("auth_data");
+                let authData = localStorage.getItem("auth_data") || localStorage.getItem("XBOARD_ACCESS_TOKEN") || localStorage.getItem("admin_token");
                 let token = "";
                 if (authData) {
                     try {
                         let parsed = JSON.parse(authData);
-                        token = parsed.token || parsed; 
+                        token = parsed.value || parsed.token || parsed; 
                     } catch(e) { token = authData; }
                 }
                 
@@ -142,19 +142,19 @@ Route::any("/{$securePath}/custom-api", function(Request $request) use ($secureP
                 <legend style='font-weight: bold; color: #333;'>{$name} 配置</legend>
                 
                 <label>版本号:</label><br>
-                <input type="text" name="{$key}_version" value="'.admin_setting("{$key}_version").'" style="width:400px; padding: 5px;"><br>
+                <input type='text' name='{$key}_version' value='".admin_setting("{$key}_version")."' style='width:400px; padding: 5px;'><br>
                 
                 <label>下载链接:</label><br>
-                <input type="text" name="{$key}_download_url" value="'.admin_setting("{$key}_download_url").'" style="width:400px; padding: 5px;"><br>
+                <input type='text' name='{$key}_download_url' value='".admin_setting("{$key}_download_url")."' style='width:400px; padding: 5px;'><br>
                 
                 <label>强制更新:</label><br>
-                <select name="{$key}_is_force_update" style="width:414px; padding: 5px;">
-                    <option value="0" '.(admin_setting("{$key}_is_force_update", 0) == 0 ? 'selected' : '').'>否 (0)</option>
-                    <option value="1" '.(admin_setting("{$key}_is_force_update", 0) == 1 ? 'selected' : '').'>是 (1)</option>
+                <select name='{$key}_is_force_update' style='width:414px; padding: 5px;'>
+                    <option value='0' ".(admin_setting("{$key}_is_force_update", 0) == 0 ? "selected" : "").">否 (0)</option>
+                    <option value='1' ".(admin_setting("{$key}_is_force_update", 0) == 1 ? "selected" : "").">是 (1)</option>
                 </select><br>
 
                 <label>更新内容/日志 (支持换行):</label><br>
-                <textarea name="{$key}_update_content" style="width:400px; height:60px; padding: 5px;">'.admin_setting("{$key}_update_content").'</textarea>
+                <textarea name='{$key}_update_content' style='width:400px; height:60px; padding: 5px;'>".admin_setting("{$key}_update_content")."</textarea>
             </fieldset>";
         }
 

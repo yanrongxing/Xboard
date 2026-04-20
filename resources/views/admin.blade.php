@@ -81,6 +81,35 @@
 
 <body>
   <div id="root"></div>
+
+  <!-- 定制功能：APP 设置悬浮按钮 -->
+  <div id="custom-api-float" style="position: fixed; right: 20px; bottom: 30px; z-index: 9999;">
+    <a href="/{{ $secure_path }}/custom-api" target="_blank" style="
+        display: block; 
+        background: #1890ff; 
+        color: white; 
+        padding: 10px 18px; 
+        border-radius: 50px; 
+        text-decoration: none; 
+        box-shadow: 0 4px 12px rgba(24, 144, 255, 0.4); 
+        font-family: sans-serif;
+        font-size: 14px;
+        font-weight: bold;
+        transition: transform 0.2s, box-shadow 0.2s;">
+      ⚙️ 定制设置中心
+    </a>
+  </div>
+  <script>
+    const floatBtn = document.querySelector('#custom-api-float a');
+    floatBtn.addEventListener('mouseenter', () => {
+        floatBtn.style.transform = 'translateY(-2px)';
+        floatBtn.style.boxShadow = '0 6px 16px rgba(24, 144, 255, 0.5)';
+    });
+    floatBtn.addEventListener('mouseleave', () => {
+        floatBtn.style.transform = 'translateY(0)';
+        floatBtn.style.boxShadow = '0 4px 12px rgba(24, 144, 255, 0.4)';
+    });
+  </script>
 </body>
 
 </html>
